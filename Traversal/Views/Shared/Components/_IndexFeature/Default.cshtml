@@ -1,0 +1,28 @@
+﻿@using EntityLayer.Concrete;
+@model List<Feature>
+<div class="best-rooms py-5">
+    <div class="container py-md-5">
+        <div class="ban-content-inf row">
+            @foreach (var item in Model)
+            {
+                
+            
+            <div class="maghny-gd-1 col-lg-6 mt-4">
+                <div class="maghny-grid">
+                    <figure class="effect-lily border-radius  m-0">
+                        <img class="img-fluid" src="@item.Image1" alt="" />
+                        <figcaption>
+                            <div>
+                                <h4>@item.Title1</h4>
+                                <p>Fiyat: @item.Description1 </p>
+                            </div>
+
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+            }
+        @await Component.InvokeAsync("_IndexFeature2")
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+﻿
+@{
+    Layout = null;
+}
+
+<html>
+<body>
+
+
+@await Html.PartialAsync("_HeaderPartial")
+
+   @await Html.PartialAsync("_NavbarPartial")
+    <div>
+        @RenderBody()
+    </div>
+
+    
+@await Html.PartialAsync("_FooterPartial")
+
+
+  
+@await Html.PartialAsync("_ScriptsPartial")
+</body>
+</html>
+

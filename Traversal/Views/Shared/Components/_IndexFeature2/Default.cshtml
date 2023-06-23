@@ -1,0 +1,26 @@
+﻿@using EntityLayer.Concrete;
+@model List<Feature2>
+
+<div class="maghny-gd-1 col-lg-6 mt-lg-0 mt-4">
+                <div class="row">
+                    @foreach (var item in Model)
+        {
+            
+        
+                    <div class="maghny-gd-1 col-6 mt-4">
+                        <div class="maghny-grid">
+                            <figure class="effect-lily border-radius">
+                                <img class="img-fluid" src="@item.Image" alt="" />
+                                <figcaption>
+                                    <div>
+                                        <h4>@item.Title</h4>
+                                        <p>Fiyat: @item.Description </p>
+                                    </div>
+
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+        }
+                </div>
+            </div>
