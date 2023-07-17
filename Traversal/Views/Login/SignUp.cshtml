@@ -1,0 +1,75 @@
+﻿@model RegisterViewModel
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Traversal Kayıt Ekranı</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- LINEARICONS -->
+	<link rel="stylesheet" href="~/register/fonts/linearicons/style.css">
+
+	<!-- STYLE CSS -->
+	<link rel="stylesheet" href="~/register/css/style.css">
+</head>
+
+<body>
+
+	<div class="wrapper">
+		<div class="inner">
+			<img src="~/register/images/image-1.png" alt="" class="image-1">
+			<form method="post">
+				<h3>Yeni Hesap Oluştur</h3>
+				<div class="form-holder">
+					<span class="lnr lnr-user"></span>
+					<input type="text" asp-for="NameSurname" class="form-control"  placeholder="Adınız Soyadınız">
+				</div>
+
+				<div class="form-holder">
+					<span class="lnr lnr-user"></span>
+					<input type="text" asp-for="Username" class="form-control" placeholder="Kullanıcı Adınız">
+				</div>
+				<div class="form-holder">
+					<span class="lnr lnr-phone-handset"></span>
+					<input type="number" asp-for="PhoneNumber" class="form-control" placeholder="Telefon Numaranız">
+				</div>
+				<div class="form-holder">
+					<span class="lnr lnr-envelope"></span>
+					<input type="email" asp-for="Mail" class="form-control" placeholder="Mail Adresiniz">
+				</div>
+				<div class="form-holder">
+					<span class="lnr lnr-lock"></span>
+					<input type="password" asp-for="Password" class="form-control" placeholder="Şifre">
+				</div>
+				<div class="form-holder">
+					<span class="lnr lnr-lock"></span>
+					<input type="password" asp-for="ConfirmPassword" class="form-control" placeholder="Şifre Tekrarı">
+				</div>
+				<div style="color:red">
+					@Html.ValidationSummary()
+				</div>
+				<button>
+					<span>Kayıt Ol</span>
+				</button>
+				</a>
+			</form>
+			<div class="text-center"> 
+			<br />
+			<p>Bir Hesabınız var mı?</p>
+			<a class="btn btn-info" href="/Login/SignIn">
+				<span>Giriş Yap</span>
+			</div>
+			<img src="~/register/images/image-2.png" alt="" class="image-2">
+		</div>
+
+	</div>
+
+	<script src="~/register/js/jquery-3.3.1.min.js"></script>
+	<script src="~/register/js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

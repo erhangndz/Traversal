@@ -7,19 +7,19 @@
 <body>
 
 
-@await Html.PartialAsync("_HeaderPartial")
+@await Html.PartialAsync("~/Views/Default/_HeaderPartial.cshtml")
 
-   @await Html.PartialAsync("_NavbarPartial")
+    @await Html.PartialAsync("~/Views/Default/_NavbarPartial.cshtml")
     <div>
         @RenderBody()
     </div>
 
-    
-@await Html.PartialAsync("_FooterPartial")
+
+    @await Html.PartialAsync("~/Views/Default/_FooterPartial.cshtml")
 
 
-  
-@await Html.PartialAsync("_ScriptsPartial")
+
+    @await Html.PartialAsync("~/Views/Default/_ScriptsPartial.cshtml")
 </body>
 </html>
 

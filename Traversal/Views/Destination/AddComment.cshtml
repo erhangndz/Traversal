@@ -1,0 +1,29 @@
+﻿
+
+<div class="leave-comment-form mt-5" id="reply">
+    <h4 class="side-title mb-2">Yorum Yap</h4>
+    <p class="mb-4">
+        Gerekli alanlar işaretlidir. *
+    </p>
+    <form asp-action="AddComment" asp-controller="Destination" method="post">
+
+        <div class="form-group">
+            <textarea name="Content" class="form-control" placeholder="Yorumunuz *" required=""
+                      spellcheck="false"></textarea>
+        </div>
+        <div class="input-grids row">
+
+            <div class="form-group col-lg-6">
+                <input type="text" name="NameSurname" class="form-control" placeholder="Adınız Soyadınız *"
+                       required="">
+            </div>
+          
+            <input type="hidden" name="DestinationID" value="@ViewBag.Id"/>
+        </div>
+
+        <div class="submit text-right">
+            <button class="btn btn-style btn-primary">Paylaş </button>
+        </div>
+    </form>
+</div>
+
