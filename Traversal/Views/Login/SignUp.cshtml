@@ -27,28 +27,28 @@
 				<h3>Yeni Hesap Oluştur</h3>
 				<div class="form-holder">
 					<span class="lnr lnr-user"></span>
-					<input type="text" asp-for="NameSurname" class="form-control"  placeholder="Adınız Soyadınız">
+					<input type="text" asp-for="NameSurname" class="form-control"  placeholder="Adınız Soyadınız" required="" />
 				</div>
 
 				<div class="form-holder">
 					<span class="lnr lnr-user"></span>
-					<input type="text" asp-for="Username" class="form-control" placeholder="Kullanıcı Adınız">
+					<input type="text" asp-for="Username" class="form-control" placeholder="Kullanıcı Adınız" required="" />
 				</div>
 				<div class="form-holder">
 					<span class="lnr lnr-phone-handset"></span>
-					<input type="number" asp-for="PhoneNumber" class="form-control" placeholder="Telefon Numaranız">
+					<input type="number" asp-for="PhoneNumber" class="form-control" placeholder="Telefon Numaranız" required="" />
 				</div>
 				<div class="form-holder">
 					<span class="lnr lnr-envelope"></span>
-					<input type="email" asp-for="Mail" class="form-control" placeholder="Mail Adresiniz">
+					<input type="email" asp-for="Mail" class="form-control" placeholder="Mail Adresiniz" required="" />
 				</div>
 				<div class="form-holder">
 					<span class="lnr lnr-lock"></span>
-					<input type="password" asp-for="Password" class="form-control" placeholder="Şifre">
+					<input type="password" asp-for="Password" class="form-control" placeholder="Şifre" required="" />
 				</div>
 				<div class="form-holder">
 					<span class="lnr lnr-lock"></span>
-					<input type="password" asp-for="ConfirmPassword" class="form-control" placeholder="Şifre Tekrarı">
+					<input type="password" asp-for="ConfirmPassword" class="form-control" placeholder="Şifre Tekrarı" required="" />
 				</div>
 				<div style="color:red">
 					@Html.ValidationSummary()

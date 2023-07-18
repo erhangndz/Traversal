@@ -1,4 +1,4 @@
-﻿
+﻿@model LoginViewModel
 @{
     Layout = null;
 }
@@ -40,20 +40,23 @@
 						Traversal Giriş Sayfası
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-						<input class="input100" type="email" name="Email" placeholder="Email Adresiniz">
+					<div class="wrap-input100 validate-input" >
+						<input class="input100" type="text" asp-for="Username" placeholder="Kullanıcı Adınız">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
+							<i class="fa fa-user" aria-hidden="true"></i>
 						</span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="Password" placeholder="Şifreniz">
+						<input class="input100" type="password" asp-for="Password" placeholder="Şifreniz">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
+					</div>
+					<div style="color:red">
+						@Html.ValidationSummary()
 					</div>
 
 					<div class="container-login100-form-btn">
