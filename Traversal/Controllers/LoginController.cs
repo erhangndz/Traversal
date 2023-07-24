@@ -7,7 +7,7 @@ using Traversal.Models;
 namespace Traversal.Controllers
 {
     [AllowAnonymous]
-    
+   
     public class LoginController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
@@ -75,7 +75,7 @@ namespace Traversal.Controllers
             var result = await _signInManager.PasswordSignInAsync(p.Username, p.Password, false, false);
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Comment");
+                return RedirectToAction("Index", "Profile", new {area="Member"});
             }
 
             else

@@ -1,0 +1,42 @@
+﻿@using Traversal.Areas.Member.Models;
+@model UserEditViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h3>Profil Düzenleme Sayfası</h3>
+<br />
+<form asp-action="Index" method="post" enctype="multipart/form-data">
+  <div class="text-center align-text-center justify-content-center">
+    <img src="~/userimages/@Html.DisplayFor(x=>x.Image)" style="width:150px;height:150px" />
+    <br />
+    <label>Profil Resmi</label>
+    </div>
+    <br /><br />
+
+    <label>Adınız Soyadınız</label>
+    @Html.TextBoxFor(x=>x.NameSurname,new{@class="form-control"})
+    <br />
+    <label>Mail Adresiniz</label>
+    @Html.TextBoxFor(x=>x.Email,new{@class="form-control"})
+    <br />
+    <label> Telefon Numaranız</label>
+    @Html.TextBoxFor(x=>x.PhoneNumber,new{@class="form-control"})
+    <br />
+    <label> Şifreniz</label>
+    @Html.TextBoxFor(x=>x.Password,new{@class="form-control"})
+    <br />
+    <label> Şifre Tekrar</label>
+    @Html.TextBoxFor(x=>x.ConfirmPassword,new{@class="form-control"})
+    <br />
+   
+    <div class="form-group">
+        <label>Profil Resmi Seçin</label>
+        <input type="file" asp-for="ImageFile" />
+        <br />
+    </div>
+
+    <button class="btn btn-dark">Bilgileri Güncelle</button>
+</form>
+
