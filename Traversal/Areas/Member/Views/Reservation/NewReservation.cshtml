@@ -1,0 +1,53 @@
+﻿@using EntityLayer.Concrete;
+@model Reservation
+@{
+    ViewData["Title"] = "NewReservation";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h3>Yeni Rezervasyon Paneli</h3>
+<br />
+<form method="post">
+    <label>Lokasyon</label>
+    @Html.DropDownListFor(x=>x.Destination,(List<SelectListItem>)ViewBag.destination, new {@class="form-control"})
+        <br />
+        <label>Kişi Sayısı</label>
+        <input type="text" asp-for="PeopleCount" class="form-control" />
+        <br />
+    <label>Tarih</label>
+    <input type="date" asp-for="ReservationDate" class="form-control" />
+    <br />
+    <label> Açıklama Yazın</label>
+    <textarea type="text" asp-for="Description" class="form-control" ></textarea>
+    <br />
+    <button class="btn btn-primary">Rezervasyon Yap</button>
+
+</form>
+
+
+
+
+   <div id="uyari" title="Rezervasyon Uyarısı" style="display:none;">
+        
+    <p>Yeni Rezervasyonlar alındıktan sonra Onay sürecine girer, ve Onay Bekliyor listesine alınırsınız. Rezervasyon detaylarınızı "Güncel Rezervasyonlarım" kısmından işlemlerinizi görüntüleyebilirsiniz. </p>
+
+    <img src="https://www.fonetsan.com.tr/en/images/image/otel_reservation.jpg" width="100%">
+        </div>
+                 
+        <!-- Script -->
+         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+       
+        <script>
+            $(function(){
+                // sayfa açılışında dialog kutusunun gelmesi için her hangi bir buton için yerleştirmedik
+                $("#uyari").dialog({
+                    width:600, //dialog kutusunun genişliği
+                    modal:true, //arkaplanın koyu olması
+                    autoOpen:true, //gerek yok ama otomatik açılması için
+                    position:  { my: "center top", at: "center top" } //konum
+                });
+            })
+            
+        </script>
+

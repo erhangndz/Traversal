@@ -1,0 +1,50 @@
+﻿@using EntityLayer.Concrete;
+@model List<Reservation>
+
+@{
+    ViewData["Title"] = "MyCurrentReservation";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h3>Merhaba @ViewBag.name ! </h3>
+<br />
+
+<h4>Onaylanan Rezervasyonlarınız</h4>
+<br />
+@{
+    int count = 0;
+}
+
+@if (!Model.Any())
+{
+    <h4 class="text-danger"> @ViewBag.v </h4>
+    ;
+}
+
+else
+{
+
+    <table class="table table-hover">
+        <tr>
+            <th>#</th>
+            <th>Destinasyon</th>
+            <th>Kişi Sayısı</th>
+            <th>Tarih</th>
+            <th>Durum</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <th>@count</th>
+                <td>@item.Destination</td>
+                <td>@item.PeopleCount</td>
+                <td>@item.ReservationDate.ToShortDateString()</td>
+                <td class="text-warning">@item.Status</td>
+            </tr>
+        }
+
+</table>
+
+;
+}

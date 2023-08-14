@@ -25,7 +25,7 @@ namespace Traversal.Areas.Member.Controllers
             model.NameSurname = values.NameSurname;
             model.PhoneNumber = values.PhoneNumber;
             model.Email = values.Email;
-            model.Image = values.Image;
+            model.ImageURL = values.Image;
       
           
             return View(model);
@@ -38,17 +38,15 @@ namespace Traversal.Areas.Member.Controllers
             if(p.Image != null)
             {
                 var resource = Directory.GetCurrentDirectory();
-                var extension = Path.GetExtension(p.ImageFile.FileName);
+                var extension = Path.GetExtension(p.Image.FileName);
                 var imagename = Guid.NewGuid()+extension;
                 var savelocation = resource + "/wwwroot/userimages/" + imagename;
                 var stream = new FileStream(savelocation,FileMode.Create);
-                await p.ImageFile.CopyToAsync(stream);
+                await p.Image.CopyToAsync(stream);
                 user.Image = imagename;
             }
 
             user.NameSurname=p.NameSurname;
-            user.PhoneNumber = p.PhoneNumber;
-            user.Email= p.Email;
             user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, p.Password);
             var result = await _userManager.UpdateAsync(user);
             if(result.Succeeded)
