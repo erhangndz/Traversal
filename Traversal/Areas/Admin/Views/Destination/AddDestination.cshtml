@@ -1,0 +1,44 @@
+﻿@using EntityLayer.Concrete;
+@model Destination
+@{
+    ViewData["Title"] = "AddDestination";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h3>Yeni Tur Oluşturma Sayfası</h3>
+<br />
+
+<form method="post">
+    <label>Şehir</label>
+    <input type="text" class="form-control " asp-for="City" />
+    <br />
+    <label>Tur Süresi</label>
+    <input type="text" class="form-control " asp-for="StayDuration" />
+    <br />
+    <label>Fiyat</label>
+    <input type="text" class="form-control " asp-for="Price" />
+    <br />
+    <label>Kapasite</label>
+    <input type="text" class="form-control " asp-for="Capacity" />
+    <br />
+    <label>Kapak Görseli</label>
+    <input type="text" class="form-control " asp-for="CoverImage" />
+    <br />
+    <label>Şehir Görseli 1 </label>
+    <input type="text" class="form-control " asp-for="Image" />
+    <br />
+    <label>Şehir Görseli 2</label>
+    <input type="text" class="form-control " asp-for="Image2" />
+    <br />
+    <label>Açıklama</label>
+   <textarea asp-for="Description" rows="5" class="form-control"> </textarea>
+    <br />
+    <label>Tur Detayları 1 </label>
+    <textarea asp-for="Details1" rows="5" class="form-control"> </textarea>
+    <br />
+    <label>Tur Detayları 2 </label>
+    <textarea asp-for="Details2" rows="5" class="form-control"> </textarea>
+    <br />
+    <button class="btn btn-dark">Kaydet</button>
+</form>
+

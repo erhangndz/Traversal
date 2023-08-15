@@ -44,6 +44,9 @@ builder.Services.AddScoped<ICommentService, CommentManager>();
 builder.Services.AddScoped<IReservationDal, EfReservationDal>();
 builder.Services.AddScoped<IReservationService, ReservationManager>();
 
+builder.Services.AddScoped<IGuideDal, EfGuideDal>();
+builder.Services.AddScoped<IGuideService, GuideManager>();
+
 
 var app = builder.Build();
 
@@ -73,5 +76,14 @@ app.UseEndpoints(endpoints =>
       pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
     );
 });
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+      name: "areas",
+      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+    );
+});
+
 
 app.Run();

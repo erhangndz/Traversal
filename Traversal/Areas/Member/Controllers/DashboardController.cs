@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Traversal.Areas.Member.Controllers
 {
     [Area("Member")]
+    [Route("Member/[controller]/[action]")]
     public class DashboardController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
@@ -19,6 +20,8 @@ namespace Traversal.Areas.Member.Controllers
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
             ViewBag.name= user.NameSurname;
             ViewBag.image = user.Image;
+            ViewBag.mail = user.Email;
+            ViewBag.phone = user.PhoneNumber;
             return View();
         }
     }

@@ -1,0 +1,44 @@
+﻿@using EntityLayer.Concrete;
+@model List<Destination>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h3>Turlarımız </h3>
+
+<br />
+@{
+    int count = 0;
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Şehir</th>
+        <th>Fiyat</th>
+        <th>Kapasite</th>
+        <th>Sitede Gör</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <td>@item.City</td>
+            <td>@item.Price ₺</td>
+            <td>@item.Capacity</td>
+            <td><a href="/Destination/DestinationDetails/@item.DestinationID" class="btn btn-outline-info">Sitede Gör</a> </td>
+            <td>
+                <a asp-action="DeleteDestination" asp-route-id="@item.DestinationID" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Sil</a>
+                <a asp-action="UpdateDestination" asp-route-id="@item.DestinationID" class="btn btn-outline-primary">Düzenle</a>
+          
+
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<a href="/Admin/Destination/AddDestination" class="btn btn-dark">Yeni Tur Oluştur</a>
