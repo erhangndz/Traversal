@@ -19,7 +19,7 @@
         <th>Şehir</th>
         <th>Fiyat</th>
         <th>Kapasite</th>
-        <th>Sitede Gör</th>
+     
         <th></th>
     </tr>
     @foreach (var item in Model)
@@ -30,13 +30,26 @@
             <td>@item.City</td>
             <td>@item.Price ₺</td>
             <td>@item.Capacity</td>
-            <td><a href="/Destination/DestinationDetails/@item.DestinationID" class="btn btn-outline-info">Sitede Gör</a> </td>
+           
             <td>
-                <a asp-action="DeleteDestination" asp-route-id="@item.DestinationID" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Sil</a>
-                <a asp-action="UpdateDestination" asp-route-id="@item.DestinationID" class="btn btn-outline-primary">Düzenle</a>
+                <i type="button"
+                        id="btnactions"
+                        data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false">
+                    <i class="bx bx-dots-vertical-rounded"></i>
+                </i>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="btnactions">
+                    <a class="dropdown-item btn btn-outline-danger" asp-action="DeleteDestination" asp-route-id="@item.DestinationID"><i class='bx bxs-trash-alt'></i>Sil </a>
+                    <a asp-action="UpdateDestination" asp-route-id="@item.DestinationID" class="dropdown-item btn btn-outline-primary"><i class='bx bxs-edit-alt'></i>Düzenle</a>
+                    <a href="/Destination/DestinationDetails/@item.DestinationID" class="dropdown-item btn btn-outline-info"> <i class='bx bx-laptop'></i>Sitede Gör</a>
+            
+                </div>
+            </td>
+               
           
 
-            </td>
+            
         </tr>
     }
 </table>

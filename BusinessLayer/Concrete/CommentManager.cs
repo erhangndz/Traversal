@@ -23,6 +23,11 @@ namespace BusinessLayer.Concrete
             _commentDal.Delete(t);
         }
 
+        public List<Comment> TGetAll()
+        {
+           return _commentDal.GetAll();
+        }
+
         public Comment TGetByID(int id)
         {
             return _commentDal.GetByID(id); 

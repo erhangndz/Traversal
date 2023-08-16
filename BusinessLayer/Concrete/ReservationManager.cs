@@ -23,6 +23,11 @@ namespace BusinessLayer.Concrete
             _reservationDal.Delete(t);
         }
 
+        public List<Reservation> TGetAll()
+        {
+            return _reservationDal.GetAll();
+        }
+
         public Reservation TGetByID(int id)
         {
             return _reservationDal.GetByID(id);

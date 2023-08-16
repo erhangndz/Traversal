@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
-    public interface IReservationDal:IGenericDal<Reservation>
+    public interface IAppUserDal:IGenericDal<AppUser>
     {
-        List<Reservation> GetAll();
     }
 }

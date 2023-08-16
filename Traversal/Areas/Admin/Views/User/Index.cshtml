@@ -1,0 +1,64 @@
+﻿@using EntityLayer.Concrete;
+@model List<AppUser>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<br />
+<h3>Misafir Listesi </h3>
+
+<br />
+@{
+    int count = 0;
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Ad Soyad</th>
+        <th>Kullanıcı Adı</th>
+        <th>EMail</th>
+
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <td><img src="~/userimages/@item.Image" style="height:75px;width:75px" />  @item.NameSurname</td>
+            <td>@item.UserName </td>
+            <td>@item.Email</td>
+
+            <td>
+                <i type="button"
+                   id="btnactions"
+                   data-bs-toggle="dropdown"
+                   aria-haspopup="true"
+                   aria-expanded="false">
+                    <i class="bx bx-dots-vertical-rounded"></i>
+                </i>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="btnactions">
+                    <a class="dropdown-item btn btn-outline-danger" asp-action="DeleteUser" asp-route-id="@item.Id"><i class='bx bxs-trash-alt'></i>Sil </a>
+                    <a asp-action="UpdateUser" asp-route-id="@item.Id" class="dropdown-item btn btn-outline-primary"><i class='bx bxs-edit-alt'></i>Düzenle</a>
+
+                    <a asp-action="UserComments" asp-route-id="@item.Id" class="dropdown-item btn btn-outline-info"><i class='bx bxs-message-rounded-dots'></i>Yorumlar</a>
+
+                    <a asp-action="UserReservations" asp-route-id="@item.Id" class="dropdown-item btn btn-outline-dark"><i class='bx bxs-plane-alt'></i>Tur Geçmişi</a>
+                   
+
+                </div>
+            </td>
+
+
+
+
+        </tr>
+    }
+</table>
+<br />
+<a href="/Login/SignUp/" class="btn btn-dark" >Yeni Kullanıcı Oluştur</a>
+

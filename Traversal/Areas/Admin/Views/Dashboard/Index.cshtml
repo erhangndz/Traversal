@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <div class="row">
+         @await Component.InvokeAsync("_DashboardBanner")
+         @await Component.InvokeAsync("_DashboardRightSideCharts")
+         
+            <!-- Total Revenue -->
+            @await Component.InvokeAsync("_DashboardTotalRevenue")
+            <!--/ Total Revenue -->
+            @await Component.InvokeAsync("_DashboardRightCharts2")
+        </div>
+        <div class="row">
+            <!-- Destination Statistics -->
+            @await Component.InvokeAsync("_DestinationStatistics")
+            <!--/ Destination Statistics -->
+            <!-- Expense Overview -->
+            @await Component.InvokeAsync("_DestinationStatistics2")
+            <!--/ Expense Overview -->
+            <!-- Transactions -->
+            @await Component.InvokeAsync("_DashboardTransaction")
+            <!--/ Transactions -->
+        </div>
+    </div>
+    <!-- / Content -->
+   
+
+    <div class="content-backdrop fade"></div>
+</div>
+

@@ -1,0 +1,49 @@
+﻿@using EntityLayer.Concrete;
+@model List<Comment>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h3>Yorumlar </h3>
+
+<br />
+@{
+    int count = 0;
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Kullanıcı</th>
+        <th>Tur</th>
+        <th>Tarih</th>
+   
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <td>@item.AppUserID</td>
+            <td>@item.Destination.City </td>
+            <td>@item.CommentDate.ToShortDateString()</td>
+           <td>
+                <i type="button"
+                   id="btnactions"
+                   data-bs-toggle="dropdown"
+                   aria-haspopup="true"
+                   aria-expanded="false"> <i class="bx bx-dots-vertical-rounded"></i> </i>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="btnactions">
+                    <a class="dropdown-item btn btn-outline-danger" asp-action="DeleteComment" asp-route-id="@item.CommentID"><i class='bx bxs-trash-alt'></i> Sil</a>
+                </div>
+
+
+            </td>
+        </tr>
+    }
+</table>
+
+

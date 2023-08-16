@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Abstract
+namespace BusinessLayer.Abstract
 {
-    public interface IReservationDal:IGenericDal<Reservation>
+    public interface IAppUserService:IGenericService<AppUser>
     {
-        List<Reservation> GetAll();
     }
 }
