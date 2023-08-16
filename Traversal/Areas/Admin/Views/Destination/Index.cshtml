@@ -30,10 +30,10 @@
             <td>@item.City</td>
             <td>@item.Price ₺</td>
             <td>@item.Capacity</td>
-            <td><a href="/Destination/DestinationDetails/@item.DestinationID" class="btn btn-outline-info">Sitede Gör</a> </td>
+            <td><a href="/Destination/DestinationDetails/@item.DestinationID" class="btn btn-outline-info"> <i class='bx bx-laptop'></i>Sitede Gör</a> </td>
             <td>
-                <a asp-action="DeleteDestination" asp-route-id="@item.DestinationID" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Sil</a>
-                <a asp-action="UpdateDestination" asp-route-id="@item.DestinationID" class="btn btn-outline-primary">Düzenle</a>
+                <a asp-action="DeleteDestination" asp-route-id="@item.DestinationID" class="btn btn-outline-danger"><i class='bx bxs-trash-alt'></i> </a>
+                <a asp-action="UpdateDestination" asp-route-id="@item.DestinationID" class="btn btn-outline-primary"><i class='bx bxs-edit-alt'></i></a>
           
 
             </td>
