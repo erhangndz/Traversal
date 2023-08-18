@@ -1,0 +1,72 @@
+﻿@using EntityLayer.Concrete;
+@model List<Guide>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var status = "";
+}
+
+
+<br />
+<h3>Rehberlerimiz </h3>
+
+<br />
+@{
+    int count = 0;
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Ad Soyad</th>
+        <th>Açıklama</th>
+        <th>Durum</th>
+      
+
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <td><img src="@item.Image" style="height:75px;width:75px"/> @item.Name</td>
+            <td>@item.Description </td>
+           
+            @{
+                if (item.Status == true)
+                {
+<td style="color:green">Aktif</td>
+             status = "Pasif Yap";
+
+                }
+                else
+                {
+            <td style="color:red">Pasif</td>
+   status = "Aktif Yap";
+                }
+            }
+
+           
+           
+            <td>
+                <i type="button"
+                   id="btnactions"
+                   data-bs-toggle="dropdown"
+                   aria-haspopup="true"
+                   aria-expanded="false"> <i class="bx bx-dots-vertical-rounded"></i> </i>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="btnactions">
+                    <a class="dropdown-item btn btn-outline-info" asp-action="DeleteGuide" asp-route-id="@item.GuideID"><i class='bx bx-chevrons-left'></i> @status</a>
+
+                    <a asp-action="UpdateGuide" asp-route-id="@item.GuideID" class="dropdown-item btn btn-outline-primary"><i class='bx bxs-edit-alt'></i>Düzenle</a>
+                </div>
+
+
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<a href="/Admin/Guide/AddGuide" class="btn btn-dark">Yeni Rehber Oluştur</a>
+
+
