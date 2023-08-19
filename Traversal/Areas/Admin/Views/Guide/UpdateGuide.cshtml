@@ -1,34 +1,31 @@
 ﻿@using EntityLayer.Concrete;
 @model Guide
 @{
-    ViewData["Title"] = "AddGuide";
+    ViewData["Title"] = "UpdateGuide";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <br />
-<h3>Yeni Rehber Oluşturma Sayfası</h3>
+<h3> Rehber Düzenleme Sayfası</h3>
 <br />
 
 <form method="post">
+    <input type="hidden" asp-for="GuideID" />
     <label>Ad Soyad</label>
     <input type="text" class="form-control " asp-for="Name" />
-    <span asp-validation-for="Name" class="text-danger"></span>
     <br />
     <label>Görsel URL</label>
     <input type="text" class="form-control " asp-for="Image" />
-    <span asp-validation-for="Image" class="text-danger"></span>
     <br />
     <label>Açıklama</label>
     <input type="text" class="form-control " asp-for="Description" />
-    <span asp-validation-for="Description" class="text-danger"></span>
     <br />
     <label>Instagram</label>
     <input type="text" class="form-control " asp-for="Instagram" />
     <br />
     <label>Linkedin</label>
     <input type="text" class="form-control " asp-for="Linkedin" />
-    
+
     <br />
     <button class="btn btn-dark">Kaydet</button>
 </form>
-

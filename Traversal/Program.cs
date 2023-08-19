@@ -12,6 +12,13 @@ using Traversal.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddLogging(x =>
+{
+    x.ClearProviders();
+    x.SetMinimumLevel(LogLevel.Debug);
+    x.AddDebug();
+});
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<Context>();
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>();
@@ -24,7 +31,11 @@ builder.Services.ConfigureApplicationCookie(_ =>
 
 }
 
-); 
+);
+
+ILoggerFactory loggerFactory = new LoggerFactory();
+var path = Directory.GetCurrentDirectory();
+loggerFactory.AddFile($"{path}\\Logs\\Log1.txt");
 
 builder.Services.AddMvcCore(config =>
 {
@@ -40,6 +51,8 @@ builder.Services.ContainerDependencies();
 
 
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

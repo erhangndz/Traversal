@@ -12,8 +12,8 @@ namespace EntityLayer.Concrete
         public string Name { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
-        public string Instagram { get; set; }
-        public string Linkedin { get; set; }
+        public string? Instagram { get; set; }
+        public string? Linkedin { get; set; }
         public bool Status { get; set; }
     }
 }

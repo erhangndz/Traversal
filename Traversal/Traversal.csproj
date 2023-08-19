@@ -7,7 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.102.1" />
+    <PackageReference Include="EPPlus" Version="6.2.8" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageReference Include="iTextSharp.LGPLv2.Core" Version="3.4.3" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.18" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.18" />
@@ -21,6 +24,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+    <PackageReference Include="Serilog.Extensions.Logging.File" Version="3.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,6 +37,8 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Member\Data\" />
+    <Folder Include="wwwroot\Logs\" />
+    <Folder Include="wwwroot\pdfreports\" />
     <Folder Include="wwwroot\userimages\" />
   </ItemGroup>
 
