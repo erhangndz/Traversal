@@ -61,9 +61,11 @@
                    aria-haspopup="true"
                    aria-expanded="false"> <i class="bx bx-dots-vertical-rounded"></i> </i>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="btnactions">
-                    <a class="dropdown-item btn btn-outline-info" asp-action="DeleteGuide" asp-route-id="@item.GuideID"><i class='bx bx-chevrons-left'></i> @status</a>
+                    <a class="dropdown-item btn btn-outline-info" asp-action="ChangeGuide" asp-route-id="@item.GuideID"><i class='bx bx-chevrons-left'></i> @status</a>
 
                     <a asp-action="UpdateGuide" asp-route-id="@item.GuideID" class="dropdown-item btn btn-outline-primary"><i class='bx bxs-edit-alt'></i>Düzenle</a>
+
+                    <a asp-action="DeleteGuide" asp-route-id="@item.GuideID" class="dropdown-item btn btn-outline-danger"><i class='bx bxs-trash-alt'></i>Sil</a>
                 </div>
 
 

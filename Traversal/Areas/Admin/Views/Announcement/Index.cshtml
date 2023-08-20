@@ -1,0 +1,49 @@
+﻿@using Traversal.Areas.Admin.Models;
+@model List<AnnouncementListViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h3>Duyuru Listesi</h3>
+<br />
+@{
+    int count = 0;
+}
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Başlık</th>
+        <th>İçerik</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++; 
+
+    <tr>
+        <th>@count</th>
+        <td>@item.Title</td>
+        <td>@item.Content</td>
+        <td>
+
+                <i type="button"
+                   id="btnactions"
+                   data-bs-toggle="dropdown"
+                   aria-haspopup="true"
+                   aria-expanded="false"> <i class="bx bx-dots-vertical-rounded"></i> </i>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="btnactions">
+
+                    <a asp-action="DeleteAnnouncement" asp-route-id="@item.ID" class="dropdown-item btn btn-outline-danger"><i class='bx bxs-trash-alt'></i>Sil</a>
+
+                    <a asp-action="UpdateAnnouncement" asp-route-id="@item.ID" class="dropdown-item btn btn-outline-primary"><i class='bx bxs-edit-alt'></i>Düzenle</a>
+
+                    <a asp-action="AnnouncementDetails" asp-route-id="@item.ID" class="dropdown-item btn btn-outline-dark"><i class='bx bxs-info-circle'></i>Detaylar</a>
+
+                   
+                </div>
+
+        </td>
+    </tr>
+    }
+</table>

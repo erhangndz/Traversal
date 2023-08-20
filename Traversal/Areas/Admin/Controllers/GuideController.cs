@@ -23,7 +23,7 @@ namespace Traversal.Areas.Admin.Controllers
 			return View(values);
 		}
 
-		public IActionResult DeleteGuide(int id)
+		public IActionResult ChangeGuide(int id)
 		{
 			var values = _guideService.TGetByID(id);
 			if (values.Status == true)
@@ -78,5 +78,12 @@ namespace Traversal.Areas.Admin.Controllers
             _guideService.TUpdate(p);
             return RedirectToAction("Index");
         }
+
+		public IActionResult DeleteGuide(int id)
+		{
+			var values = _guideService.TGetByID(id);
+			_guideService.TDelete(values);
+			return RedirectToAction("Index");
+		}
     }
 }

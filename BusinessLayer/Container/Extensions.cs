@@ -45,7 +45,13 @@ namespace BusinessLayer.Container
             Services.AddScoped<IExcelService, ExcelManager>();
 
             Services.AddScoped<IPdfService, PdfManager>();
-          
+
+            Services.AddScoped<IContactUsDal, EfContactUsDal>();
+            Services.AddScoped<IContactUsService, ContactUsManager>();
+
+            Services.AddScoped<IAnnouncementDal, EfAnnouncementDal>();
+            Services.AddScoped<IAnnouncementService, AnnouncementManager>();
+
         }
     }
 }

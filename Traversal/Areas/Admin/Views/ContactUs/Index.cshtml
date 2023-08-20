@@ -1,0 +1,53 @@
+﻿@using EntityLayer.Concrete;
+@model List<ContactUs>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<br />
+<h3>Bize Ulaşın Mesajları </h3>
+
+<br />
+@{
+    int count = 0;
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Gönderen Adı</th>
+        <th>Mail</th>
+        <th>Konu</th>
+        <th>Tarih</th>
+
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <td>@item.Name</td>
+            <td>@item.Mail </td>
+            <td>@item.Subject</td>
+            <td>@item.MessageDate.ToShortDateString()</td>
+            <td>
+                <i type="button"
+                   id="btnactions"
+                   data-bs-toggle="dropdown"
+                   aria-haspopup="true"
+                   aria-expanded="false"> <i class="bx bx-dots-vertical-rounded"></i> </i>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="btnactions">
+                    <a class="dropdown-item btn btn-outline-danger" asp-action="DeleteContactUs" asp-route-id="@item.ContactUsID"><i class='bx bxs-trash-alt'></i> Sil</a>
+                    <a asp-action="UpdateContactUs" asp-route-id="@item.ContactUsID" class="dropdown-item btn btn-outline-primary"><i class='bx bxs-edit-alt'></i>Düzenle</a>
+                    <a href="/Admin/ContactUs/ContactUsDetails/@item.ContactUsID" class="dropdown-item btn btn-outline-info"> <i class='bx bxs-message-rounded-dots'></i>Mesajı Aç</a>
+                </div>
+
+
+            </td>
+        </tr>
+    }
+</table>
+

@@ -1,10 +1,14 @@
 using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
 using BusinessLayer.Container;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using DTOLayer.DTOs.AnnouncementDTOs;
 using EntityLayer.Concrete;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Traversal.Models;
@@ -20,8 +24,12 @@ builder.Services.AddLogging(x =>
 });
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddDbContext<Context>();
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>();
+
+builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddTransient<IValidator<AddAnnouncementDto>,AnnouncementValidator>();
 
 builder.Services.ConfigureApplicationCookie(_ =>
 {
