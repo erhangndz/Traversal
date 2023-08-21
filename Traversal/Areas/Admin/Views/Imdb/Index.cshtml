@@ -1,0 +1,40 @@
+﻿@using Traversal.Areas.Admin.Models;
+@model List<ImdbViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h3>IMDB En İyi 100 Film </h3>
+
+<br />
+@{
+    int count = 0;
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Film Adı</th>
+        <th>Konusu</th>
+        <th>Yılı</th>
+        <th>Imdb Puanı</th>
+
+  
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <td><img src="@item.image" height="75" width="75" />  @item.title</td>
+            <td><abbr title="@item.description"> Konu</abbr> </td>
+            <td>@item.year</td>
+            <td>@item.rating</td>
+
+        </tr>
+    }
+</table>
+
+

@@ -1,0 +1,24 @@
+﻿@using DTOLayer.DTOs.AnnouncementDTOs;
+@model AddAnnouncementDto
+@{
+    ViewData["Title"] = "AddAnnouncement";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h3>Yeni Duyuru Oluşturma Sayfası</h3>
+<br />
+
+<form method="post">
+    <label>Duyuru Başlığı</label>
+    <input type="text" class="form-control " asp-for="Title" />
+    <span asp-validation-for="Title" class="text-danger"></span>
+    <br />
+    <label>Duyuru İçeriği</label>
+    <textarea asp-for="Content" rows="5" class="form-control"> </textarea>
+    <span asp-validation-for="Content" class="text-danger"></span>
+    <br />
+    <button class="btn btn-dark">Kaydet</button>
+</form>
+
+

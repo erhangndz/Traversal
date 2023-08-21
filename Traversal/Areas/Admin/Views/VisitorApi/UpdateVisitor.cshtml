@@ -1,0 +1,32 @@
+﻿@using Traversal.Areas.Admin.Models;
+@model VisitorViewModel
+@{
+    ViewData["Title"] = "UpdateVisitor";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h3>Api ile Ziyaretçi Düzenleme Sayfası</h3>
+<br />
+
+<form method="post">
+    <input type="hidden" asp-for="VisitorID" />
+    <label>Ziyaretçi Adı</label>
+    <input type="text" class="form-control " asp-for="Name" />
+    <br />
+    <label>Ziyaretçi Soyadı</label>
+    <input type="text" class="form-control " asp-for="Surname" />
+    <br />
+    <label>Şehir</label>
+    <input type="text" class="form-control " asp-for="City" />
+    <br />
+    <label>Ülke</label>
+    <input type="text" class="form-control " asp-for="Country" />
+    <br />
+    <label>Mail</label>
+    <input type="email" class="form-control " asp-for="Mail" />
+    <br />
+    <button class="btn btn-dark">Kaydet</button>
+</form>
+
+

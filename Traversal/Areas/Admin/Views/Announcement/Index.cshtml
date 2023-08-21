@@ -1,11 +1,11 @@
-﻿@using Traversal.Areas.Admin.Models;
-@model List<AnnouncementListViewModel>
+﻿@using DTOLayer.DTOs.AnnouncementDTOs;
+@model List<AnnouncementListDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <br />
-<h3>Duyuru Listesi</h3>
+<h3>Duyurular</h3>
 <br />
 @{
     int count = 0;
@@ -34,11 +34,11 @@
                    aria-expanded="false"> <i class="bx bx-dots-vertical-rounded"></i> </i>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="btnactions">
 
-                    <a asp-action="DeleteAnnouncement" asp-route-id="@item.ID" class="dropdown-item btn btn-outline-danger"><i class='bx bxs-trash-alt'></i>Sil</a>
+                    <a asp-action="DeleteAnnouncement" asp-route-id="@item.AnnouncementID" class="dropdown-item btn btn-outline-danger"><i class='bx bxs-trash-alt'></i>Sil</a>
 
-                    <a asp-action="UpdateAnnouncement" asp-route-id="@item.ID" class="dropdown-item btn btn-outline-primary"><i class='bx bxs-edit-alt'></i>Düzenle</a>
+                    <a asp-action="UpdateAnnouncement" asp-route-id="@item.AnnouncementID" class="dropdown-item btn btn-outline-primary"><i class='bx bxs-edit-alt'></i>Düzenle</a>
 
-                    <a asp-action="AnnouncementDetails" asp-route-id="@item.ID" class="dropdown-item btn btn-outline-dark"><i class='bx bxs-info-circle'></i>Detaylar</a>
+                    <a asp-action="AnnouncementDetails" asp-route-id="@item.AnnouncementID" class="dropdown-item btn btn-outline-dark"><i class='bx bxs-info-circle'></i>Detaylar</a>
 
                    
                 </div>
@@ -47,3 +47,5 @@
     </tr>
     }
 </table>
+<br />
+<a href="/Admin/Announcement/AddAnnouncement" class="btn btn-dark">Yeni Duyuru Oluştur</a>
