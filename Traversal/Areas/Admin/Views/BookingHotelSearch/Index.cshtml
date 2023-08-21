@@ -1,0 +1,54 @@
+﻿@using Traversal.Areas.Admin.Models;
+@model IEnumerable<BookingSearchHotelViewModel.Result>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h3>Booking Api Otel Listesi </h3>
+<br />
+<h4>Şehir: Paris/Fransa</h4>
+
+<br />
+@{
+    int count = 0;
+    double score  = 0;
+    string ScoreWord = "";
+
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Otel Adı</th>
+        <th>Otel Puanı</th>
+        <th>Otel Değerlendirmesi</th>
+        <th>Adres</th>
+     
+       
+
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        score = Double.Parse( item.review_score.ToString()) / 10;
+        count++;
+
+      
+        <tr>
+            <th>@count</th>
+            <td> @item.hotel_name</td>
+            <td>  @score   </td>
+            <td>@item.review_score_word</td>
+            <td>@item.address_trans </td>
+           
+           
+
+        </tr>
+    }
+</table>
+
+
+
+
