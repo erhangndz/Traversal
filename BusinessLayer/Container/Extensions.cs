@@ -55,6 +55,8 @@ namespace BusinessLayer.Container
             Services.AddScoped<IAnnouncementDal, EfAnnouncementDal>();
             Services.AddScoped<IAnnouncementService, AnnouncementManager>();
 
+       
+
         }
 
         public static void CustomValidator(this IServiceCollection Services)

@@ -5,12 +5,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<br />
-<h3>Booking Api Otel Listesi </h3>
-<br />
-<h4>Şehir: Paris/Fransa</h4>
 
-<br />
 @{
     int count = 0;
     double score  = 0;
@@ -18,36 +13,86 @@
 
 }
 
-<table class="table table-hover">
-    <tr>
-        <th>#</th>
-        <th>Otel Adı</th>
-        <th>Otel Puanı</th>
-        <th>Otel Değerlendirmesi</th>
-        <th>Adres</th>
-     
-       
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
-    </tr>
-    @foreach (var item in Model)
-    {
-        score = Double.Parse( item.review_score.ToString()) / 10;
-        count++;
+<div class="container">
+    <div class="card">
+        <h5 class="card-header bg-dark text-white text-center">Şehirde Otel Bulma</h5>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6 mt-4">
+                <div class="input-group">
+                    <input type="text" id="inputValue" class="form-control" placeholder="Şehir Adını Yazın">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-dark" id="getDataButton">Ara</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div id="dataList"></div>
+    </div>
+</div>
 
-      
-        <tr>
-            <th>@count</th>
-            <td> @item.hotel_name</td>
-            <td>  @score   </td>
-            <td>@item.review_score_word</td>
-            <td>@item.address_trans </td>
-           
-           
 
-        </tr>
-    }
-</table>
+<script>
+    $(document).ready(function () {
+        $('#getDataButton').click(function () {
+            var inputValue = $('#inputValue').val();
+
+            var requestData = { value: inputValue };
+
+            $.ajax({
+                url:
+                    'https://booking-com.p.rapidapi.com/v1/hotels/locations?name=' +
+                    encodeURIComponent(requestData.value) +
+                    '&locale=tr',
+                type: 'GET',
+                headers: {
+                    'X-RapidAPI-Key': 'b555c5ce48msh829147e03d3c901p17b01cjsnb0346ad61158',
+                    'X-RapidAPI-Host': 'booking-com.p.rapidapi.com',
+                },
+                success: function (data) {
+                    var destId = data[0].dest_id; // İlk öğenin dest_id değerini alın
+                    var secondApiUrl =
+                        'https://booking-com.p.rapidapi.com/v2/hotels/search?order_by=popularity&adults_number=2&checkin_date=2023-09-27&filter_by_currency=AED&dest_id=' +
+                        destId +
+                        '&locale=tr&checkout_date=2023-09-28&units=metric&room_number=1&dest_type=city&include_adjacency=true&children_number=2&page_number=0&children_ages=5%2C0&categories_filter_ids=class%3A%3A2%2Cclass%3A%3A4%2Cfree_cancellation%3A%3A1';
+
+                    $.ajax({
+                        url: secondApiUrl,
+                        type: 'GET',
+                        headers: {
+                            'X-RapidAPI-Key': 'b555c5ce48msh829147e03d3c901p17b01cjsnb0346ad61158',
+                            'X-RapidAPI-Host': 'booking-com.p.rapidapi.com',
+                        },
+                        data: requestData,
+                        success: function (response) {
+                            var table = '<table class="table">';
+                            table += '<thead><tr><th>Otel Adı</th><th>Otel Puanı</th><th>Değerlendirme</th></tr></thead>';
+                            table += '<tbody>';
+                            $.each(response.results, function (index, item) {
+                                var hotelName = item.name;
+                                var reviewScore = item.reviewScore;
+                                var reviewScoreWord = item.reviewScoreWord
+                                table += '<tr><td>' + hotelName + '</td><td>' + reviewScore + '</td><td>' + reviewScoreWord + '</td></tr>';
+                            });
+                            table += '</tbody></table>';
+
+                            $('#dataList').html(table);
+                        },
+                        error: function () {
+                            $('#dataList').html('<p>Bir hata oluştu.</p>');
+                        },
+                    });
+                },
+                error: function () {
+                    $('#dataList').html('<p>Bir hata oluştu.</p>');
+                },
+            });
+        });
+    });
+</script>
 
 
 

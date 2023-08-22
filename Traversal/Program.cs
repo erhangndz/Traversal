@@ -4,6 +4,7 @@ using EntityLayer.Concrete;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Traversal.CQRS.Handlers.DestinationHandlers;
 using Traversal.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -49,6 +50,7 @@ builder.Services.AddMvcCore(config =>
 
 
 builder.Services.ContainerDependencies();
+builder.Services.AddScoped<GetAllDestinationsQueryHandler>();
 
 
 
