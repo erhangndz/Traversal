@@ -1,16 +1,16 @@
-﻿@using Traversal.CQRS.Results.DestinationResults;
-@model GetDestinationByIDQueryResult
+﻿@using Traversal.CQRS.Commands.DestinationCommands;
+@model CreateDestinationCommand
 @{
-    ViewData["Title"] = "GetDestination";
+    ViewData["Title"] = "AddDestination";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <br />
-<h3>CQRS Tur Düzenleme Sayfası</h3>
+<h3>CQRS Yeni Tur Ekleme Sayfası</h3>
 <br />
 
 <form method="post">
-    <input type="hidden" asp-for="DestinationId" />
+   
     <label>Şehir</label>
     <input type="text" class="form-control " asp-for="City" />
     <br />
@@ -22,9 +22,10 @@
     <br />
     <label>Fiyat</label>
     <input type="text" class="form-control " asp-for="Price" />
-    
+
     <br />
     <button class="btn btn-dark">Kaydet</button>
 </form>
+
 
 

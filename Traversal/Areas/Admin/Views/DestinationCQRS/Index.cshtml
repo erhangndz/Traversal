@@ -41,7 +41,7 @@
                 </i>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="btnactions">
                     <a class="dropdown-item btn btn-outline-danger" asp-action="DeleteDestination" asp-route-id="@item.Id"><i class='bx bxs-trash-alt'></i>Sil </a>
-                    <a asp-action="UpdateDestination" asp-route-id="@item.Id" class="dropdown-item btn btn-outline-primary"><i class='bx bxs-edit-alt'></i>Düzenle</a>
+                    <a asp-action="GetDestination" asp-route-id="@item.Id" class="dropdown-item btn btn-outline-primary"><i class='bx bxs-edit-alt'></i>Düzenle</a>
                     <a href="/Destination/DestinationDetails/@item.Id" class="dropdown-item btn btn-outline-info"> <i class='bx bx-laptop'></i>Sitede Gör</a>
 
                 </div>

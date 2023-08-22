@@ -1,0 +1,54 @@
+﻿@using Traversal.CQRS.Results.GuideResults;
+@model List<GetAllGuideQueryResult>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h3>CQRS MediatR Rehber Listesi</h3>
+<br />
+@{
+    int count = 0;
+}
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Ad Soyad</th>
+        <th>Açıklama</th>
+      
+        <th></th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <td><img src="@item.Image" style="height:65px;width:65px" /> @item.Name</td>
+            <td>@item.Description</td>
+            
+
+            <td>
+                <i type="button"
+                   id="btnactions"
+                   data-bs-toggle="dropdown"
+                   aria-haspopup="true"
+                   aria-expanded="false">
+                    <i class="bx bx-dots-vertical-rounded"></i>
+                </i>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="btnactions">
+                    <a class="dropdown-item btn btn-outline-danger" asp-action="DeleteGuide" asp-route-id="@item.GuideID"><i class='bx bxs-trash-alt'></i>Sil </a>
+                    <a asp-action="UpdateGuide" asp-route-id="@item.GuideID" class="dropdown-item btn btn-outline-primary"><i class='bx bxs-edit-alt'></i>Düzenle</a>
+                   
+
+                </div>
+            </td>
+
+        </tr>
+    }
+</table>
+<br />
+<a href="/Admin/GuideMediatR/AddGuide" class="btn btn-dark">Yeni Rehber Oluştur</a>
+

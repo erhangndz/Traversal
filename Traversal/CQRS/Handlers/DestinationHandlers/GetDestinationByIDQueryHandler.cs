@@ -20,8 +20,11 @@ namespace Traversal.CQRS.Handlers.DestinationHandlers
             {
                 DestinationId = values.DestinationID,
                 City = values.City,
-                StayDuration = values.StayDuration
+                StayDuration = values.StayDuration,
+                Price=values.Price,
+                Capacity = values.Capacity
             };
+            
         }
     }
 }
