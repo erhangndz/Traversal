@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Traversal.CQRS.Commands.GuideCommands;
 using Traversal.CQRS.Queries.GuideQueries;
 
 namespace Traversal.Areas.Admin.Controllers
@@ -19,6 +20,31 @@ namespace Traversal.Areas.Admin.Controllers
         {
             var values = await _mediator.Send(new GetAllGuideQuery());
             return View(values);
+        }
+        [HttpGet]
+        public async Task<IActionResult> UpdateGuide(int id)
+        {
+            var values = await _mediator.Send(new GetGuideByIdQuery(id));
+            return View(values);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateGuide()
+        {
+            
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult AddGuide()
+        {
+            return View();
+        }
+        [HttpPost]  
+        public async Task<IActionResult> AddGuide(CreateGuideCommand command)
+        {
+            await _mediator.Send(command);
+            return RedirectToAction("Index");
         }
     }
 }

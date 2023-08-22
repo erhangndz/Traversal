@@ -1,0 +1,25 @@
+﻿@using Traversal.CQRS.Results.GuideResults;
+@model GetGuideByIdQueryResult
+@{
+    ViewData["Title"] = "UpdateGuide";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h3>CQRS MediatR Rehber Düzenleme Sayfası</h3>
+<br />
+
+<form method="post">
+    <input type="hidden" asp-for="GuideID" />
+    <label>Ad Soyad</label>
+    <input type="text" class="form-control " asp-for="Name" />
+    <br />
+    <label>Görsel URL</label>
+    <input type="text" class="form-control " asp-for="Image" />
+    <br />
+    <label>Açıklama</label>
+    <input type="text" class="form-control " asp-for="Description" />
+    <br />
+    <button class="btn btn-dark">Kaydet</button>
+</form>
+
