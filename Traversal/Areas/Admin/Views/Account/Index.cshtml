@@ -1,0 +1,37 @@
+﻿@using Traversal.Areas.Admin.Models;
+@model AccountViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<br />
+<h3>Unit of Work Personel Prim Transferi</h3>
+<br />
+
+<form method="post">
+    <label>Gönderen</label>
+    @Html.DropDownListFor(x=>x.SenderID,(List<SelectListItem>)ViewBag.id,"Göndereni Seçin",new{ @class="form-control"})
+    <br />
+    <label>Alıcı</label>
+    @Html.DropDownListFor(x=>x.ReceiverID,(List<SelectListItem>)ViewBag.id,"Alıcıyı Seçin",new{ @class="form-control"})
+    <br />
+    <label>Tutar ₺</label>
+    <input type="text" asp-for="Amount" class="form-control" />
+    <br />
+    <button class="btn btn-dark" id="btnsend">Hesaba Aktar</button>
+</form>
+
+<script>
+    $('#btnsend').click(function () {
+        swal({
+            title: "Tebrikler!",
+            text: "Hesaba Para Aktarma İşlemi Gerçekleşti!",
+            icon: "success",
+            button: "Tamam",
+        });
+
+    })
+</script>
