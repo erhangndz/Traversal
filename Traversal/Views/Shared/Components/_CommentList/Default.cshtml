@@ -11,14 +11,14 @@
 
     <div class="media mt-4">
         <div class="img-circle">
-            <img src="@item.Image" class="img-fluid" alt="...">
+            <img src="~/userimages/@item.AppUser.Image" class="img-fluid" >
         </div>
         <div class="media-body">
 
             <ul class="time-rply mb-2">
                 <li>
-                    <a href="#URL" class="name mt-0 mb-2 d-block"> @item.AppUserID</a>
-                    @item.CommentDate.ToShortDateString()
+                    <a href="#URL" class="name mt-0 mb-2 d-block"> @item.AppUser.NameSurname</a>
+                    @item.CommentDate
 
                 </li>
                 <li class="reply-last">

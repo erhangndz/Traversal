@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Traversal.Controllers
@@ -8,11 +9,13 @@ namespace Traversal.Controllers
     {
         private readonly IDestinationService _destinationService;
         private readonly ICommentService _commentService;
+        private readonly UserManager<AppUser> _userManager;
 
-        public DestinationController(IDestinationService destinationService, ICommentService commentService)
+        public DestinationController(IDestinationService destinationService, ICommentService commentService, UserManager<AppUser> userManager)
         {
             _destinationService = destinationService;
             _commentService = commentService;
+            _userManager = userManager;
         }
 
         public IActionResult Index()
@@ -33,18 +36,25 @@ namespace Traversal.Controllers
        
 
         [HttpGet]
-        public PartialViewResult AddComment()
+        public async Task<PartialViewResult> AddComment()
         {
-           
 
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+           
+            ViewBag.image=user.Image;
+            ViewBag.name = user.NameSurname;
             return PartialView();
         }
 
         [HttpPost]
-        public IActionResult AddComment(Comment p, int id)
+        public async Task<IActionResult> AddComment(Comment p, int id)
         {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            ViewBag.name = user.NameSurname;
+            p.AppUserID= user.Id;
             p.Status = true;
-            p.CommentDate= DateTime.Parse( DateTime.Now.ToShortDateString());
+            p.CommentDate = DateTime.Now;
+            p.Image= user.Image;
          
             _commentService.TInsert(p);
           

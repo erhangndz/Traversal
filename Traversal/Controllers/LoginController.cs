@@ -34,6 +34,8 @@ namespace Traversal.Controllers
                 Email = p.Mail,
                 NameSurname = p.NameSurname,
                 UserName = p.Username,
+                PhoneNumber = p.PhoneNumber,
+                Image="user.jpg"
 
             };
 
