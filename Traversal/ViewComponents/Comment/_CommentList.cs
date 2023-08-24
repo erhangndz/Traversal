@@ -8,20 +8,19 @@ namespace Traversal.ViewComponents.Comment
     public class _CommentList:ViewComponent
     {
         private readonly ICommentService _commentService;
-        private readonly UserManager<AppUser> _userManager;
+       
 
-        public _CommentList(ICommentService commentService, UserManager<AppUser> userManager)
+        public _CommentList(ICommentService commentService)
         {
             _commentService = commentService;
-            _userManager = userManager;
+          
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(int id)
+        public IViewComponentResult Invoke(int id)
         {
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            ViewBag.image = user.Image;
             
-            ViewBag.commentcount = _commentService.TGetList().Where(x=>x.DestinationID==id).Count();
+            
+            ViewBag.commentcount = _commentService.TGetList().Where(x=>x.DestinationID==id & x.Status==true).Count();
             var values= _commentService.TGetAll().Where(x=>x.DestinationID==id & x.Status==true).ToList();
            
             return View(values);

@@ -5,6 +5,7 @@ using DataAccessLayer.Abstract;
 using DataAccessLayer.EntityFramework;
 using DataAccessLayer.UnitOfWork;
 using DTOLayer.DTOs.AnnouncementDTOs;
+using DTOLayer.DTOs.ContactUsDTOs;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -53,6 +54,9 @@ namespace BusinessLayer.Container
             Services.AddScoped<IContactUsDal, EfContactUsDal>();
             Services.AddScoped<IContactUsService, ContactUsManager>();
 
+            Services.AddScoped<IContactDal, EfContactDal>();
+            Services.AddScoped<IContactService, ContactManager>();
+
             Services.AddScoped<IAnnouncementDal, EfAnnouncementDal>();
             Services.AddScoped<IAnnouncementService, AnnouncementManager>();
 
@@ -69,6 +73,7 @@ namespace BusinessLayer.Container
         {
             Services.AddTransient<IValidator<AddAnnouncementDto>, AnnouncementValidator>();
             Services.AddTransient<IValidator<UpdateAnnouncementDto>, UpdateAnnouncementValidator>();
+            Services.AddTransient<IValidator<SendMessageDto>, SendMessageValidator>();
         }
     }
 }

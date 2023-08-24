@@ -5,16 +5,16 @@ namespace Traversal.ViewComponents.Destination
 {
     public class _TourGuidesDetails:ViewComponent
     {
-        private readonly IGuideService _guideService;
+        private readonly IDestinationService _destinationService;
 
-        public _TourGuidesDetails(IGuideService guideService)
+        public _TourGuidesDetails(IDestinationService destinationService)
         {
-            _guideService = guideService;
+            _destinationService = destinationService;
         }
 
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(int id)
         {
-            var values = _guideService.TGetByID(2);
+            var values = _destinationService.TGetAll().Where(x=>x.DestinationID==id).ToList();
             
             return View(values);
         }

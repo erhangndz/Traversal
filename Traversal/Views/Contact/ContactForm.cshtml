@@ -1,0 +1,29 @@
+﻿@using DTOLayer.DTOs.ContactUsDTOs;
+@model SendMessageDto
+
+
+<div class="col-lg-6 mt-lg-0 mt-5 contact-right">
+    <form asp-action="ContactForm" method="post" class="signin-form">
+        <div class="input-grids">
+            <div class="form-group">
+                <input type="text" asp-for="Name" id="w3lName" placeholder="Adınız Soyadınız" class="contact-input" required="" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="email" asp-for="Mail" id="w3lSender" placeholder="Email Adresiniz" class="contact-input" required="" />
+                <span asp-validation-for="Mail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="text" asp-for="Subject" id="w3lSubect" placeholder="Konu" class="contact-input" required="" />
+                <span asp-validation-for="Subject" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <textarea asp-for="MessageBody" id="w3lMessage" placeholder="Mesajınızı buraya yazın" required=""></textarea>
+            <span asp-validation-for="MessageBody" class="text-danger"></span>
+        </div>
+        <div class="text-right">
+            <button class="btn btn-style btn-primary">Gönder</button>
+        </div>
+    </form>
+</div>

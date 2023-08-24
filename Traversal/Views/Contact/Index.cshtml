@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+<!-- about breadcrumb -->
+<section class="w3l-about-breadcrumb text-left">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+        <div class="container py-2">
+            <h2 class="title">İletişim</h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="/Default/Index/">Ana Sayfa</a></li>
+                <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> İletişim </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- //about breadcrumb -->
+<!-- contact-form -->
+<section class="w3l-contact" id="contact">
+    <div class="contact-infubd py-5">
+        <div class="container py-lg-3">
+            <div class="contact-grids row">
+              @await Component.InvokeAsync("_ContactInfo")
+
+               @await Html.PartialAsync("ContactForm")
+
+            </div>
+           
+                
+            
+            <div class="map mt-5 pt-md-5">
+                <h5>Harita</h5>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12240.25733850018!2d32.80589087233823!3d39.91757645430533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d34f6903192bb7%3A0x4476f2a2ee5b45dc!2zQcWeVMSw!5e0!3m2!1str!2str!4v1692880942139!5m2!1str!2str"
+                        style="border:0" allowfullscreen=""></iframe>
+            </div>
+            
+        </div>
+</section>
+<!-- /contact-form -->
+

@@ -1,10 +1,12 @@
 ﻿using BusinessLayer.Abstract;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Traversal.Controllers
 {
+    [AllowAnonymous]
     public class DestinationController : Controller
     {
         private readonly IDestinationService _destinationService;
@@ -27,14 +29,26 @@ namespace Traversal.Controllers
         [HttpGet]
         public async Task<IActionResult> DestinationDetails(int id)
         {
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
-            ViewBag.image = user.Image;
-            ViewBag.name = user.NameSurname;
-            ViewBag.Id = id;
-            var values = _destinationService.TGetByID(id);
+                ViewBag.image = user.Image;
+                ViewBag.name = user.NameSurname;
+                ViewBag.Id = id;
+                var values = _destinationService.TGetAll().Where(x=>x.DestinationID==id).FirstOrDefault();
 
-            return View(values);
+                return View(values);
+            }
+            else
+            {
+                ViewBag.Id = id;
+                var values = _destinationService.TGetByID(id);
+
+                return View(values);
+            }
+            
+            
         }
 
        
@@ -43,10 +57,7 @@ namespace Traversal.Controllers
         public async Task<PartialViewResult> AddComment()
         {
 
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
-           
-            ViewBag.image=user.Image;
-            ViewBag.name = user.NameSurname;
+            
             return PartialView();
         }
 
