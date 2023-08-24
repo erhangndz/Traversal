@@ -22,7 +22,7 @@ namespace Traversal.ViewComponents.Comment
             ViewBag.image = user.Image;
             
             ViewBag.commentcount = _commentService.TGetList().Where(x=>x.DestinationID==id).Count();
-            var values= _commentService.TGetAll().Where(x=>x.DestinationID==id).ToList();
+            var values= _commentService.TGetAll().Where(x=>x.DestinationID==id & x.Status==true).ToList();
            
             return View(values);
         }

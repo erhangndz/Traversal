@@ -11,6 +11,8 @@
 <br />
 @{
     int count = 0;
+    var status = "";
+    var statusColor = "";
 }
 
 <table class="table table-hover">
@@ -19,17 +21,22 @@
         <th>Kullanıcı</th>
         <th>Tur</th>
         <th>Tarih</th>
+        <th>Yorum</th>
+        <th>Onay Durumu</th>
    
         <th></th>
     </tr>
     @foreach (var item in Model)
     {
         count++;
+        if (item.Status == false) { status = "Onay Bekliyor"; statusColor = "text-warning"; } else { status = "Onaylandı"; statusColor = "text-success"; }
         <tr>
             <th>@count</th>
-            <td>@item.AppUserID</td>
+            <td>@item.AppUser.NameSurname</td>
             <td>@item.Destination.City </td>
             <td>@item.CommentDate.ToShortDateString()</td>
+            <td>@item.Content</td>
+            <th class="@statusColor">@status</th>
            <td>
                 <i type="button"
                    id="btnactions"
@@ -37,7 +44,9 @@
                    aria-haspopup="true"
                    aria-expanded="false"> <i class="bx bx-dots-vertical-rounded"></i> </i>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="btnactions">
-                    <a class="dropdown-item btn btn-outline-danger" asp-action="DeleteComment" asp-route-id="@item.CommentID"><i class='bx bxs-trash-alt'></i> Sil</a>
+                    <a class="dropdown-item btn btn-outline-danger" asp-action="DeleteComment" asp-route-id="@item.CommentID"><i class='bx bxs-trash-alt'></i> Yorumu Kaldır</a>
+
+                    <a class="dropdown-item btn btn-outline-success" asp-action="ConfirmComment" asp-route-id="@item.CommentID"><i class='bx bxs-check-circle'></i> Onayla</a>
                 </div>
 
 

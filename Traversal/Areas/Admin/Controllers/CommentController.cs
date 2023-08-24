@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Abstract;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Traversal.Areas.Admin.Controllers
@@ -23,7 +24,16 @@ namespace Traversal.Areas.Admin.Controllers
         public IActionResult DeleteComment(int id)
         {
             var values = _commentService.TGetByID(id);
-            _commentService.TDelete(values);
+            values.Status = false;
+            _commentService.TUpdate(values);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult ConfirmComment(int id)
+        {
+            var values = _commentService.TGetByID(id);
+            values.Status = true;
+            _commentService.TUpdate(values);
             return RedirectToAction("Index");
         }
     }

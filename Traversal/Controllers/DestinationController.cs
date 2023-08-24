@@ -25,8 +25,12 @@ namespace Traversal.Controllers
         }
 
         [HttpGet]
-        public IActionResult DestinationDetails(int id)
+        public async Task<IActionResult> DestinationDetails(int id)
         {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            ViewBag.image = user.Image;
+            ViewBag.name = user.NameSurname;
             ViewBag.Id = id;
             var values = _destinationService.TGetByID(id);
 
@@ -52,14 +56,14 @@ namespace Traversal.Controllers
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
             ViewBag.name = user.NameSurname;
             p.AppUserID= user.Id;
-            p.Status = true;
+            p.Status = false;
             p.CommentDate = DateTime.Now;
             p.Image= user.Image;
          
             _commentService.TInsert(p);
-          
-        
-            return RedirectToAction("Index");
+
+
+            return NoContent();
         }
     }
 }

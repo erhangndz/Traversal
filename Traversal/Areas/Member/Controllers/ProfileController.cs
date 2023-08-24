@@ -47,6 +47,8 @@ namespace Traversal.Areas.Member.Controllers
             }
 
             user.NameSurname=p.NameSurname;
+            user.Email=p.Email;
+            user.PhoneNumber = p.PhoneNumber;
             user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, p.Password);
             var result = await _userManager.UpdateAsync(user);
             if(result.Succeeded)
