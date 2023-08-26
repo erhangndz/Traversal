@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.SignalR;
-using SignalRApi.Models;
+using SignalRApiForSql.Models;
 
-namespace SignalRApi.Hubs
+namespace SignalRApiForSql.Hubs
 {
     public class VisitorHub:Hub
     {

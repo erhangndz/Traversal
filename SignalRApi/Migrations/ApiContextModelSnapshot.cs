@@ -41,7 +41,7 @@ namespace SignalRApi.Migrations
 
                     b.HasKey("VisitorID");
 
-                    b.ToTable("Visitors");
+                    b.ToTable("Visitors", (string)null);
                 });
 #pragma warning restore 612, 618
         }
