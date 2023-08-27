@@ -14,7 +14,7 @@ namespace SignalRApiForSql.Hubs
 
         public async Task GetVisitorList()
         {
-            await Clients.All.SendAsync("CallVisitList", "bbb");
+            await Clients.All.SendAsync("ReceiveVisitorList", _visitorService.GetVisitorChartList());
         }
     }
 }
