@@ -27,7 +27,7 @@ namespace Traversal.Areas.Admin.Controllers
                 var body = await response.Content.ReadAsStringAsync();
                var bodyReplace= body.Replace(".", "");
                 var values = JsonConvert.DeserializeObject<BookingSearchHotelViewModel>(bodyReplace);
-                return View(values.result);
+                return View(values.results);
             }
         }
 

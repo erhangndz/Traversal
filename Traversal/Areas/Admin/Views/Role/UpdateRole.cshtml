@@ -1,0 +1,24 @@
+﻿@using Traversal.Areas.Admin.Models;
+@model UpdateRoleViewModel
+@{
+    ViewData["Title"] = "UpdateRole";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<br />
+<h3> Rol Düzenleme Sayfası</h3>
+<br />
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <label>Rol Adı</label>
+    <input type="text" class="form-control " asp-for="Name" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+    <br />
+
+
+    <button class="btn btn-outline-dark"><i class='bx bxs-save'></i>Kaydet</button>
+</form>
+
+

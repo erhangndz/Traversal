@@ -43,7 +43,7 @@ namespace Traversal.Controllers
             else
             {
                 ViewBag.Id = id;
-                var values = _destinationService.TGetByID(id);
+                var values = _destinationService.TGetAll().Where(x => x.DestinationID == id).FirstOrDefault();
 
                 return View(values);
             }

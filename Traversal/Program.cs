@@ -33,9 +33,7 @@ builder.Services.ConfigureApplicationCookie(_ =>
     _.LogoutPath = new PathString("/Login/Logout");
    
 
-}
-
-);
+});
 
 ILoggerFactory loggerFactory = new LoggerFactory();
 var path = Directory.GetCurrentDirectory();

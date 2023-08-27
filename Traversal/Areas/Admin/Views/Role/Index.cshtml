@@ -1,0 +1,54 @@
+﻿@using EntityLayer.Concrete;
+@model List<AppRole>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h3>Rol Listesi</h3>
+@{
+    int count = 0;
+}
+<br />
+@if (Model.Any())
+{
+
+    <table class="table table-hover">
+        <tr>
+            <th>#</th>
+            <th>Rol Adı</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            count++;
+
+            <tr>
+                <td>@count</td>
+                <td>@item.Name</td>
+                <td>
+                    <i type="button"
+                    id="btnactions"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false">
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                    </i>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="btnactions">
+                        <a class="dropdown-item btn btn-outline-danger" asp-action="DeleteRole" asp-route-id="@item.Id"><i class='bx bxs-trash-alt'></i>Sil </a>
+                        <a asp-action="UpdateRole" asp-route-id="@item.Id" class="dropdown-item btn btn-outline-primary"><i class='bx bxs-edit-alt'></i>Düzenle</a>
+
+
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p class="alert alert-warning">Herhangi bir Rol Bulunamadı</p>
+}
+<br />
+<a class=" btn btn-outline-dark" href="/Admin/Role/CreateRole"><i class='bx bxs-plus-circle'></i>Yeni Rol Ekle </a>
