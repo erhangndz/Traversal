@@ -24,5 +24,10 @@ namespace Traversal.Areas.Member.Controllers
             ViewBag.phone = user.PhoneNumber;
             return View();
         }
+
+        public async Task<IActionResult> MemberDashboard()
+        {
+            return View();
+        }
     }
 }

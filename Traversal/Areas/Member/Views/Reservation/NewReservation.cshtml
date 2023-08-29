@@ -2,11 +2,34 @@
 @model Reservation
 @{
     ViewData["Title"] = "NewReservation";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
 }
 
-<h3>Yeni Rezervasyon Paneli</h3>
+<div class="content-header row">
+    <div class="content-header-left col-md-4 col-12 mb-2">
+        <h3 class="content-header-title">Yeni Rezervasyon Paneli</h3>
+    </div>
+    <div class="content-header-right col-md-8 col-12">
+        <div class="breadcrumbs-top float-md-right">
+            <div class="breadcrumb-wrapper mr-1">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/Member/Dashboard/Index">Ana Sayfa</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        Yeni Rezervasyon Paneli
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
 <br />
+<br />
+<h3></h3>
+<br />
+<div class="card pull-up ecom-card-1 bg-white container">
+
 <form method="post">
     <label>Lokasyon</label>
     @Html.DropDownListFor(x=>x.Destination,(List<SelectListItem>)ViewBag.destination, new {@class="form-control"})
@@ -25,7 +48,7 @@
 </form>
 
 
-
+</div>
 
    <div id="uyari" title="Rezervasyon Uyarısı" style="display:none;">
         
@@ -35,8 +58,8 @@
         </div>
                  
         <!-- Script -->
-         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
        
         <script>
             $(function(){

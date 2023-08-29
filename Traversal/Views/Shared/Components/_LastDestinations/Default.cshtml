@@ -1,9 +1,9 @@
 ﻿@using EntityLayer.Concrete;
 @model List<Destination>
 
-<div class="col-12 mt-4">
-    <div class="card mb-4">
-        <div class="card-header pb-0 p-3">
+<div class="col-12 mt-4 card pull-up ecom-card-1 bg-white container-fluid">
+    <div class="card mb-4 card pull-up ecom-card-1 bg-white container-fluid">
+        <div class="card-header pb-0 p-3 card pull-up ecom-card-1 bg-white container-fluid">
             <h6 class="mb-1">Son Turlarımız</h6>
             <p class="text-sm">Traversal Acentasının Son Eklenen Seyahat Turları</p>
         </div>
@@ -11,13 +11,13 @@
             <div class="row">
                 @foreach (var item in Model)
                 {
-                    
-                
-                <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+
+
+                    <div class="col-xl-3 col-md-6 mb-xl-0 mb-4 card pull-up ecom-card-1 bg-primary container-fluid">
                     <div class="card card-blog card-plain">
                         <div class="position-relative">
                             <a class="d-block shadow-xl border-radius-xl">
-                                    <img src="@item.CoverImage" style="width:300px;height:300px"   alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
+                                    <img src="@item.CoverImage" style="width:300px;height:200px"   alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
                             </a>
                         </div>
                         <div class="card-body px-1 pb-0">
@@ -42,6 +42,7 @@
                         </div>
                     </div>
                 </div>
+           
                }
             </div>
         </div>

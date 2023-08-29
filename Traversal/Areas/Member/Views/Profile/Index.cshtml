@@ -2,11 +2,30 @@
 @model UserEditViewModel
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
 }
-
-<h3>Profil Düzenleme Sayfası</h3>
+<div class="content-header row">
+    <div class="content-header-left col-md-4 col-12 mb-2">
+        <h3 class="content-header-title">Profil Düzenleme Sayfası</h3>
+    </div>
+    <div class="content-header-right col-md-8 col-12">
+        <div class="breadcrumbs-top float-md-right">
+            <div class="breadcrumb-wrapper mr-1">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/Member/Dashboard/Index">Ana Sayfa</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        Profil Düzenleme Sayfası
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
 <br />
+<br />
+<div class="card pull-up ecom-card-1 bg-white container">
 <form asp-action="Index" method="post" enctype="multipart/form-data">
   <div class="text-center align-text-center justify-content-center">
     <img src="~/userimages/@Html.DisplayFor(x=>x.ImageURL)" style="width:150px;height:150px" />
@@ -37,6 +56,7 @@
         <br />
     </div>
     <br />
-    <button class="btn btn-dark">Bilgileri Güncelle</button>
+    <button class="btn btn-primary">Bilgileri Güncelle</button>
 </form>
 
+    </div>
