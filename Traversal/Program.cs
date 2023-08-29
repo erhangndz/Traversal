@@ -25,6 +25,10 @@ builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Contex
 
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.CustomValidator();
+builder.Services.AddLocalization(opt =>
+{
+    opt.ResourcesPath = "Resources";
+});
 
 builder.Services.AddHttpClient();
 builder.Services.ConfigureApplicationCookie(_ =>
@@ -45,7 +49,7 @@ builder.Services.AddMvcCore(config =>
     .RequireAuthenticatedUser()
     .Build();
     config.Filters.Add(new AuthorizeFilter(policy));
-});
+}).AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotations();
 
 
 builder.Services.ContainerDependencies();
@@ -78,7 +82,9 @@ app.UseAuthentication();
 app.UseRouting();
 
 app.UseAuthorization();
-
+var supportedCultures = new[] { "en", "fr", "es", "gr", "tr", "de" };
+var localizationOptions= new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[4]).AddSupportedCultures(supportedCultures).AddSupportedUICultures(supportedCultures);
+app.UseRequestLocalization(localizationOptions);
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Default}/{action=Index}/{id?}");
