@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace Traversal.Areas.Member.Controllers
 {
     [Area("Member")]
+    [Route("Member/[controller]/[action]")]
     public class ReservationController : Controller
     {
         private readonly IDestinationService _destinationService;

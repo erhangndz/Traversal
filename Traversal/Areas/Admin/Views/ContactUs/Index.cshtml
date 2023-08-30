@@ -42,7 +42,7 @@
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="btnactions">
                     <a class="dropdown-item btn btn-outline-danger" asp-action="DeleteContactUs" asp-route-id="@item.ContactUsID"><i class='bx bxs-trash-alt'></i> Sil</a>
                     <a asp-action="UpdateContactUs" asp-route-id="@item.ContactUsID" class="dropdown-item btn btn-outline-primary"><i class='bx bxs-edit-alt'></i>Düzenle</a>
-                    <a href="/Admin/ContactUs/ContactUsDetails/@item.ContactUsID" class="dropdown-item btn btn-outline-info"> <i class='bx bxs-message-rounded-dots'></i>Mesajı Aç</a>
+                    <a asp-action="ContactUsDetails" asp-route-id="@item.ContactUsID" class="dropdown-item btn btn-outline-info"> <i class='bx bxs-message-rounded-dots'></i>Mesajı Aç</a>
                 </div>
 
 

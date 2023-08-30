@@ -1,0 +1,50 @@
+﻿@model MailRequest
+@{
+    ViewData["Title"] = "ReplyMessage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<br />
+<h3>Mail Gönderme Sayfası</h3>
+<br />
+<form method="post">
+
+    <label>Alıcı Ad Soyad</label>
+    <input type="text" class="form-control" asp-for="ReceiverName" value="@ViewBag.name" />
+    <br />
+    <label>Alıcı Mail</label>
+    <input type="email" class="form-control" asp-for="ReceiverMail" value="@ViewBag.mail" />
+    <br>
+    <label>Konu </label>
+    <input type="text" class="form-control" asp-for="Subject" value="@ViewBag.subject" />
+    <br>
+    <textarea class="form-control" asp-for="Body" rows="10" placeholder="Mailinizi Bu Alana Yazın..."></textarea>
+    <br />
+    <button class="btn btn-outline-dark" id="btnsend"> <i class='bx bx-mail-send'></i> Gönder</button>
+
+
+
+
+</form>
+
+
+
+<script>
+    $('#btnsend').click(function () {
+        swal({
+            title: "Tebrikler!",
+            text: "EMail başarılı bir şekilde gönderildi!",
+            icon: "success",
+            button: "Tamam",
+        });
+
+    })
+</script>
+
+
+

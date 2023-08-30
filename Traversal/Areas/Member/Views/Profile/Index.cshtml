@@ -44,10 +44,10 @@
     @Html.TextBoxFor(x=>x.PhoneNumber,new{@class="form-control"})
     <br />
     <label> Şifreniz</label>
-    @Html.TextBoxFor(x=>x.Password,new{@class="form-control"})
+   <input type="password" asp-for="Password" class="form-control" />
     <br />
     <label> Şifre Tekrar</label>
-    @Html.TextBoxFor(x=>x.ConfirmPassword,new{@class="form-control"})
+        <input type="password" asp-for="ConfirmPassword" class="form-control" />
     <br />
    
     <div class="form-group">

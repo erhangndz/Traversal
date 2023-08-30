@@ -1,0 +1,28 @@
+﻿@using EntityLayer.Concrete;
+@model ContactUs
+@{
+    ViewData["Title"] = "ContactUsDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h3>Bize Ulaşın Mesaj İçeriği </h3>
+
+<br />
+
+<form method="get">
+
+
+       <input type="hidden" asp-for="ContactUsID" />
+
+   
+        <label>Gönderen Adı</label>
+        <input type="text" class="form-control" asp-for="Name" />
+        <br />
+        <label>Mesaj İçeriği</label>
+        <textarea asp-for="MessageBody" class="form-control" rows="10"></textarea>
+       
+
+</form>
+<br />
+<a asp-action="ReplyMessage" asp-route-id="@Model.ContactUsID" class="btn btn-outline-dark"><i class='bx bxs-send'></i> Mesajı Yanıtla</a>
+

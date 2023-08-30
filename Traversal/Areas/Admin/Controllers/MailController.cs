@@ -20,7 +20,7 @@ namespace Traversal.Areas.Admin.Controllers
         public IActionResult SendMail(MailRequest p)
         {
             MimeMessage mimeMessage = new MimeMessage();
-            MailboxAddress mailboxAddressFrom = new MailboxAddress("Erhan Gündüz", "erhangndz@gmail.com");
+            MailboxAddress mailboxAddressFrom = new MailboxAddress("Traversal Admin", "erhangndz@gmail.com");
             mimeMessage.From.Add(mailboxAddressFrom);
             MailboxAddress mailboxAddressTo = new MailboxAddress(p.ReceiverName, p.ReceiverMail);
             mimeMessage.To.Add(mailboxAddressTo);

@@ -1,0 +1,68 @@
+﻿@using EntityLayer.Concrete;
+@model List<Destination>
+
+@{
+    ViewData["Title"] = "SearchCities";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<div class="content-header row">
+    <div class="content-header-left col-md-4 col-12 mb-2">
+        <h3 class="content-header-title">Tur Arama Sayfası</h3>
+    </div>
+    <div class="content-header-right col-md-8 col-12">
+        <div class="breadcrumbs-top float-md-right">
+            <div class="breadcrumb-wrapper mr-1">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/Member/Dashboard/Index">Ana Sayfa</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        Tur Arama Sayfası
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+@{
+    int count = 0;
+}
+<div class="card pull-up ecom-card-1 bg-white">
+    <form asp-action="SearchCities" method="get" >
+        <div>
+            <p>
+                <b> Lütfen Aranacak Şehri Yazın :</b> <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" />
+                <input type="submit" value="Şehir Ara" class="btn btn-outline-dark" />
+            </p>
+        </div>
+
+    </form>
+    <table class="table table-hover">
+
+        <tr>
+            <th>#</th>
+            <th>Şehir</th>
+            <th>Süre</th>
+            <th>Kapasite</th>
+            <th>Fiyat</th>
+            <th>Detaylar</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            count++;
+
+            <tr>
+                <th>@count</th>
+                <td>@item.City</td>
+                <td>@item.StayDuration</td>
+                <td>@item.Capacity</td>
+                <td>@item.Price ₺</td>
+                <td><a href="/Destination/DestinationDetails/@item.DestinationID" class="btn btn-outline-primary">Detaylar</a></td>
+            </tr>
+        }
+    </table>
+
+</div>
+

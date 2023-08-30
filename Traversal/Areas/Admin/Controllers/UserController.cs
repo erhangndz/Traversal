@@ -30,19 +30,7 @@ namespace Traversal.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        public IActionResult UpdateUser(int id)
-        {
-            var values = _appUserService.TGetByID(id);
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult UpdateUser(AppUser p)
-        {
-            _appUserService.TUpdate(p);
-            return RedirectToAction("Index");   
-        }
+       
 
         public IActionResult UserComments(int id)
         {
