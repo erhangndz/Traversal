@@ -1,0 +1,28 @@
+﻿@using EntityLayer.Concrete;
+@model Feature
+@{
+    ViewData["Title"] = "AddFeature";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<br />
+<h3>Yeni Öne Çıkan Oluşturma Sayfası</h3>
+<br />
+
+<form method="post">
+    <label> Başlık</label>
+    <input type="text" class="form-control " asp-for="Title1" />
+    <span asp-validation-for="Title1" class="text-danger"></span>
+    <br />
+    <label> Görsel URL</label>
+    <input type="text" class="form-control " asp-for="Image1" />
+    <span asp-validation-for="Image1" class="text-danger"></span>
+    <br />
+    <label>Açıklama</label>
+    <textarea asp-for="Description1" rows="5" class="form-control"> </textarea>
+    <span asp-validation-for="Description1" class="text-danger"></span>
+    <br />
+    <button class="btn btn-outline-dark"><i class='bx bxs-save'></i>Kaydet</button>
+</form>

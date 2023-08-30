@@ -1,0 +1,53 @@
+﻿@using EntityLayer.Concrete;
+@model List<Feature>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<br />
+<h3>Öne Çıkanlar</h3>
+<br />
+@{
+    int count = 0;
+}
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Başlık</th>
+        <th>Açıklama</th>
+      
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+
+        <tr>
+            <th>@count</th>
+            <td><img src="@item.Image1" style="height:50px;width:50px" /> @item.Title1</td>
+            <td>@item.Description1</td>
+            <td>
+
+                <i type="button"
+                   id="btnactions"
+                   data-bs-toggle="dropdown"
+                   aria-haspopup="true"
+                   aria-expanded="false"> <i class="bx bx-dots-vertical-rounded"></i> </i>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="btnactions">
+
+                    <a asp-action="DeleteFeature" asp-route-id="@item.FeatureID" class="dropdown-item btn btn-outline-danger"><i class='bx bxs-trash-alt'></i>Sil</a>
+
+                    <a asp-action="UpdateFeature" asp-route-id="@item.FeatureID" class="dropdown-item btn btn-outline-primary"><i class='bx bxs-edit-alt'></i>Düzenle</a>
+
+                   
+
+                </div>
+
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<a href="/Admin/Feature/AddFeature" class="btn btn-dark">Yeni Öne Çıkan Oluştur</a>

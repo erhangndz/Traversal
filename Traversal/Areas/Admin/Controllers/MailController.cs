@@ -20,7 +20,7 @@ namespace Traversal.Areas.Admin.Controllers
         public IActionResult SendMail(MailRequest p)
         {
             MimeMessage mimeMessage = new MimeMessage();
-            MailboxAddress mailboxAddressFrom = new MailboxAddress("Traversal Admin", "erhangndz@gmail.com");
+            MailboxAddress mailboxAddressFrom = new MailboxAddress("Traversal Admin", "traversalnoreply@gmail.com");
             mimeMessage.From.Add(mailboxAddressFrom);
             MailboxAddress mailboxAddressTo = new MailboxAddress(p.ReceiverName, p.ReceiverMail);
             mimeMessage.To.Add(mailboxAddressTo);
@@ -32,7 +32,7 @@ namespace Traversal.Areas.Admin.Controllers
             mimeMessage.Subject = p.Subject;
             SmtpClient client = new SmtpClient();
             client.Connect("smtp.gmail.com", 587, false);
-            client.Authenticate("erhangndz@gmail.com", "yebhkmrmskljbthp");
+            client.Authenticate("traversalnoreply@gmail.com", "idekglamodhssdrb");
             client.Send(mimeMessage);
             client.Disconnect(true);
 

@@ -8,7 +8,7 @@
 
 @{
     int count = 0;
-    double score  = 0;
+    double score = 0;
     string ScoreWord = "";
 
 }
@@ -17,22 +17,22 @@
 
 
 <div class="container">
-    <div class="card">
-        <h5 class="card-header bg-dark text-white text-center">Şehirde Otel Bulma</h5>
-        <div class="row justify-content-center align-items-center">
-            <div class="col-md-6 mt-4">
-                <div class="input-group">
-                    <input type="text" id="inputValue" class="form-control" placeholder="Şehir Adını Yazın">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-dark" id="getDataButton"><i class='bx bx-search'></i>Ara</button>
-                    </div>
+    <br />
+    <h5 class="container text-center">Booking API ile Şehirde Otel Bulma</h5>
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-6 mt-4">
+            <div class="input-group">
+                <input type="text" id="inputValue" class="form-control" placeholder="Şehir Adını Yazın">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-dark" id="getDataButton"><i class='bx bx-search'></i>Ara</button>
                 </div>
             </div>
         </div>
-        <br />
-        <div id="dataList"></div>
     </div>
+    <br />
+    <div id="dataList"></div>
 </div>
+
 
 
 <script>

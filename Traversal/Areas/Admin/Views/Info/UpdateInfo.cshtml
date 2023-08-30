@@ -1,0 +1,27 @@
+﻿@using EntityLayer.Concrete;
+@model Info
+@{
+    ViewData["Title"] = "UpdateInfo";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<br />
+<h3> Bilgi Düzenleme Sayfası</h3>
+<br />
+
+<form method="post">
+    <input type="hidden" asp-for="InfoID" />
+    <label> Başlık</label>
+    <input type="text" class="form-control " asp-for="Title" />
+    <span asp-validation-for="Title" class="text-danger"></span>
+    <br />
+
+    <label>Açıklama</label>
+    <textarea asp-for="Description" rows="5" class="form-control"> </textarea>
+    <span asp-validation-for="Description" class="text-danger"></span>
+    <br />
+    <button class="btn btn-outline-dark"><i class='bx bxs-save'></i>Kaydet</button>
+</form>
+
+
