@@ -1,4 +1,5 @@
-﻿using EntityLayer.Concrete;
+﻿using DocumentFormat.OpenXml.Spreadsheet;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -42,11 +43,12 @@ namespace Traversal.Controllers
             if(p.Password==p.ConfirmPassword)
             {
                 var result = await _userManager.CreateAsync(appUser,p.Password);
-
-
-                if (result.Succeeded)
+				if (result.Succeeded)
                 {
-                    return RedirectToAction("SignIn");
+                  
+					await _userManager.AddToRoleAsync(appUser,"Member");
+
+					return RedirectToAction("SignIn");
                 }
 
                 else
@@ -85,7 +87,13 @@ namespace Traversal.Controllers
                 ModelState.AddModelError("", "Kullanıcı adı veya şifre yanlış");
                 return View();
             }
-			return View();
+			
+		}
+
+		public async Task<IActionResult> Logout()
+		{
+			await _signInManager.SignOutAsync();
+			return RedirectToAction("SignIn", "Login");
 		}
 	}
 }

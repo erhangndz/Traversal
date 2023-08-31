@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -8,6 +9,7 @@ namespace Traversal.Areas.Member.Controllers
 {
     [Area("Member")]
     [Route("Member/[controller]/[action]")]
+    [Authorize(Roles = "Member")]
     public class ReservationController : Controller
     {
         private readonly IDestinationService _destinationService;
@@ -79,7 +81,7 @@ namespace Traversal.Areas.Member.Controllers
             p.AppUserID= user.Id;
             p.Status = "Onay Bekliyor";
             _reservationService.TInsert(p);
-            return RedirectToAction("MyCurrentReservation","Reservation", new { area = "Member" });
+            return NoContent();
         }
     }
 }

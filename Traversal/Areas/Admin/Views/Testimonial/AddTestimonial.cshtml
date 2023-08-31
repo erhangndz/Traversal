@@ -1,0 +1,29 @@
+﻿@using EntityLayer.Concrete;
+@model Testimonial
+@{
+    ViewData["Title"] = "AddTestimonial";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h3>Yeni Referans Ekleme Sayfası</h3>
+<br />
+
+<form method="post">
+    <label>Ad Soyad</label>
+    <input type="text" class="form-control " asp-for="Name" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+    <br />
+    <label>Görsel URL</label>
+    <input type="text" class="form-control " asp-for="Image" />
+    <span asp-validation-for="Image" class="text-danger"></span>
+    <br />
+    <label>Yorum</label>
+    <textarea type="text" class="form-control " rows="6" asp-for="Comment" ></textarea>
+    <span asp-validation-for="Comment" class="text-danger"></span>
+    
+    <br />
+    <button class="btn btn-outline-dark"><i class='bx bxs-save'></i>Kaydet</button>
+</form>
+
+

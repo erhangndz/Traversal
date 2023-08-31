@@ -14,7 +14,7 @@ namespace Traversal.ViewComponents.Default
 
         public IViewComponentResult Invoke()
         {
-            var values= _testimonialService.TGetList();
+            var values= _testimonialService.TGetList().Where(x=>x.Status==true).ToList();
             return View(values);
         }
     }

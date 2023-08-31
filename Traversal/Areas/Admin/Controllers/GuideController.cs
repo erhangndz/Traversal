@@ -2,12 +2,14 @@
 using BusinessLayer.ValidationRules;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Traversal.Areas.Admin.Controllers
 {
 	[Area("Admin")]
     [Route("Admin/[controller]/[action]")]
+    [Authorize(Roles = "Admin")]
     public class GuideController : Controller
 	{
 		private readonly IGuideService _guideService;

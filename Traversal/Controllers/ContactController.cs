@@ -51,7 +51,7 @@ namespace Traversal.Controllers
                     MessageDate = DateTime.Now,
                     MessageStatus = true
                 });
-                return RedirectToAction("Index");
+                return NoContent();
             }
             return NoContent();
             

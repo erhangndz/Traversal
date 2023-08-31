@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Traversal.CQRS.Commands.DestinationCommands;
 using Traversal.CQRS.Handlers.DestinationHandlers;
 using Traversal.CQRS.Queries.DestinationQueries;
@@ -7,6 +8,7 @@ namespace Traversal.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("Admin/[controller]/[action]")]
+    [Authorize(Roles = "Admin")]
     public class DestinationCQRSController : Controller
     {
         private readonly GetAllDestinationsQueryHandler _getAllDestinationsQueryHandler;

@@ -4,6 +4,8 @@
     ViewData["Title"] = "NewReservation";
     Layout = "~/Views/Shared/_MemberLayout.cshtml";
 }
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <div class="content-header row">
     <div class="content-header-left col-md-4 col-12 mb-2">
@@ -43,7 +45,7 @@
     <label> Açıklama Yazın</label>
     <textarea type="text" asp-for="Description" class="form-control" ></textarea>
     <br />
-    <button class="btn btn-primary">Rezervasyon Yap</button>
+    <button class="btn btn-primary" id="btnres">Rezervasyon Yap</button>
 
 </form>
 
@@ -58,7 +60,7 @@
         </div>
                  
         <!-- Script -->
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
        
         <script>
@@ -73,4 +75,19 @@
             })
             
         </script>
+
+<script>
+    function showSweetAlert() {
+        Swal.fire({
+            title: 'Rezervasyonunuz başarılı bir şekilde kaydedildi ve Onay Bekliyor listesine eklendi.',
+            icon: 'info',
+            showCancelButton: false,
+            confirmButtonText: 'Tamam'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/Member/Reservation/MyApprovalReservation"; // Yönlendirilecek URL'yi buraya yazın
+            }
+        });
+    }
+</script>
 

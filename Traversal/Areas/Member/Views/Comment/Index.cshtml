@@ -1,8 +1,62 @@
-﻿
+﻿@using EntityLayer.Concrete;
+@model List<Comment>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_MemberLayout.cshtml";
 }
 
-<h1>Index</h1>
+<div class="content-header row">
+    <div class="content-header-left col-md-4 col-12 mb-2">
+        <h3 class="content-header-title">Yorumlarım</h3>
+    </div>
+    <div class="content-header-right col-md-8 col-12">
+        <div class="breadcrumbs-top float-md-right">
+            <div class="breadcrumb-wrapper mr-1">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/Member/Dashboard/Index">Ana Sayfa</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        Yorumlarım
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
 
+<br />
+@{
+    int count = 0;
+    var status = "";
+    var statusColor = "";
+}
+<div class="card pull-up ecom-card-1 bg-white">
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Kullanıcı</th>
+        <th>Tur</th>
+        <th>Tarih</th>
+        <th>Yorum</th>
+        <th>Onay Durumu</th>
+
+       
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        if (item.Status == false) { status = "Onay Bekliyor"; statusColor = "text-warning"; } else { status = "Onaylandı"; statusColor = "text-success"; }
+        <tr>
+            <th>@count</th>
+            <td>@item.AppUser.NameSurname</td>
+            <td>@item.Destination.City </td>
+            <td>@item.CommentDate.ToShortDateString()</td>
+            <td>@item.Content</td>
+            <th class="@statusColor">@status</th>
+           
+        </tr>
+    }
+</table>
+
+</div>

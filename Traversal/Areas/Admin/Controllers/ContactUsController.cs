@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using MailKit.Net.Smtp;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit;
 using Traversal.Models;
@@ -8,6 +9,7 @@ namespace Traversal.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("Admin/[controller]/[action]")]
+    [Authorize(Roles = "Admin")]
     public class ContactUsController : Controller
     {
         private readonly IContactUsService _contactUsService;

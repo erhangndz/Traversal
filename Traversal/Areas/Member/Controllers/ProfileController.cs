@@ -3,11 +3,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Traversal.Areas.Member.Models;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Traversal.Areas.Member.Controllers
 {
     [Area("Member")]
     [Route("Member/[controller]/[action]")]
+    [Authorize(Roles = "Member")]
     public class ProfileController : Controller
     {
         private readonly UserManager<AppUser> _userManager;

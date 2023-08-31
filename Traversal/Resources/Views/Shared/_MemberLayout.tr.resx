@@ -117,11 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Admin Paneli" xml:space="preserve">
+    <value>Admin Paneli</value>
+  </data>
   <data name="Aktif Rezervasyon" xml:space="preserve">
     <value>Aktif Rezervasyon</value>
   </data>
-  <data name="Geçmiş Rezervasyon" xml:space="preserve">
-    <value>Geçmiş Rezervasyon</value>
+  <data name="Geçmiş Rezerv." xml:space="preserve">
+    <value>Geçmiş Rezerv.</value>
   </data>
   <data name="Onay Bekleyenler" xml:space="preserve">
     <value>Onay Bekleyenler</value>

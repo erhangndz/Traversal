@@ -117,11 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Aktif Rezervasyon" xml:space="preserve">
-    <value>Réservation active</value>
+  <data name="Admin Paneli" xml:space="preserve">
+    <value>administratrice</value>
   </data>
-  <data name="Geçmiş Rezervasyon" xml:space="preserve">
-    <value>Réservation passée</value>
+  <data name="Aktif Rezervasyon" xml:space="preserve">
+    <value>Réservs active</value>
+  </data>
+  <data name="Geçmiş Rezerv." xml:space="preserve">
+    <value>Réserv. passée</value>
   </data>
   <data name="Onay Bekleyenler" xml:space="preserve">
     <value>Approbations</value>
@@ -139,7 +142,7 @@
     <value>Nouvelle réserv.</value>
   </data>
   <data name="Yorumlarım" xml:space="preserve">
-    <value>Mes commentaires</value>
+    <value>commentaires</value>
   </data>
   <data name="Çıkış Yap" xml:space="preserve">
     <value>Se déconnecter</value>

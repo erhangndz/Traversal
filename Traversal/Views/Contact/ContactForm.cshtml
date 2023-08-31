@@ -1,6 +1,8 @@
 ﻿@using DTOLayer.DTOs.ContactUsDTOs;
 @model SendMessageDto
 
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <div class="col-lg-6 mt-lg-0 mt-5 contact-right">
     <form asp-action="ContactForm" method="post" class="signin-form">
@@ -23,7 +25,24 @@
             <span asp-validation-for="MessageBody" class="text-danger"></span>
         </div>
         <div class="text-right">
-            <button class="btn btn-style btn-primary">Gönder</button>
+            <button class="btn btn-style btn-primary" onclick="showSweetAlert()">Gönder</button>
         </div>
     </form>
 </div>
+
+
+
+<script>
+    function showSweetAlert() {
+        Swal.fire({
+            title: 'Mesajınız gönderildi. En kısa sürede yöneticiler size mail ile dönüş yapacaktır.',
+            icon: 'info',
+            showCancelButton: false,
+            confirmButtonText: 'Tamam'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/Contact/Index"; // Yönlendirilecek URL'yi buraya yazın
+            }
+        });
+    }
+</script>

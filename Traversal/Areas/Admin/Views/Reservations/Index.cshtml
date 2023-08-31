@@ -1,0 +1,58 @@
+﻿@using EntityLayer.Concrete;
+@model List<Reservation>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h3>Rezervasyonlar </h3>
+
+<br />
+@{
+    int count = 0;
+   
+    var statusColor = "";
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Kullanıcı</th>
+        <th>Kişi Sayısı</th>
+        <th>Tur</th>
+        <th>Tarih</th>
+        <th>Onay Durumu</th>
+
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        if (item.Status == "Onay Bekliyor") { statusColor = "text-warning"; } else if (item.Status == "Onaylandı") { statusColor = "text-success"; } else{ statusColor = "text-secondary"; }
+        <tr>
+            <th>@count</th>
+            <td>@item.AppUser.NameSurname</td>
+            <td>@item.PeopleCount </td>
+            <td>@item.Destination</td>
+            <td>@item.ReservationDate.ToShortDateString()</td>
+            <th class="@statusColor">@item.Status</th>
+            <td>
+                <i type="button"
+                   id="btnactions"
+                   data-bs-toggle="dropdown"
+                   aria-haspopup="true"
+                   aria-expanded="false"> <i class="bx bx-dots-vertical-rounded"></i> </i>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="btnactions">
+                    <a class="dropdown-item btn btn-outline-danger" asp-action="DeleteReservation" asp-route-id="@item.ReservationID"><i class='bx bxs-trash-alt'></i> Sil</a>
+
+                    <a class="dropdown-item btn btn-outline-success" asp-action="ConfirmReservation" asp-route-id="@item.ReservationID"><i class='bx bxs-check-circle'></i> Onayla</a>
+                </div>
+
+
+            </td>
+        </tr>
+    }
+</table>
+
+

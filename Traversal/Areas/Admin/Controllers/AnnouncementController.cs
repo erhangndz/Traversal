@@ -2,6 +2,7 @@
 using BusinessLayer.Abstract;
 using DTOLayer.DTOs.AnnouncementDTOs;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Traversal.Areas.Admin.Models;
 
@@ -9,6 +10,7 @@ namespace Traversal.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("Admin/[controller]/[action]")]
+    [Authorize(Roles = "Admin")]
     public class AnnouncementController : Controller
     {
         private readonly IAnnouncementService _announcementService;

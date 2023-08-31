@@ -35,7 +35,7 @@ namespace Traversal.Controllers
                 token = passwordResetToken
             }, HttpContext.Request.Scheme);
             MimeMessage mimeMessage = new MimeMessage();
-            MailboxAddress mailboxAddressFrom = new MailboxAddress("Admin", "erhangndz@gmail.com");
+            MailboxAddress mailboxAddressFrom = new MailboxAddress("Traversal Admin", "traversalnoreply@gmail.com");
             mimeMessage.From.Add(mailboxAddressFrom);
             MailboxAddress mailboxAddressTo = new MailboxAddress("Üye", model.Mail);
             mimeMessage.To.Add(mailboxAddressTo);
@@ -47,7 +47,7 @@ namespace Traversal.Controllers
             mimeMessage.Subject = "Şifre Değişiklik Talebi";
             SmtpClient client = new SmtpClient();
             client.Connect("smtp.gmail.com", 587, false);
-            client.Authenticate("erhangndz@gmail.com", "yebhkmrmskljbthp");
+            client.Authenticate("traversalnoreply@gmail.com", "idekglamodhssdrb");
             client.Send(mimeMessage);
             client.Disconnect(true);
 

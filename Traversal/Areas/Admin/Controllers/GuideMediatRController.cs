@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Traversal.CQRS.Commands.GuideCommands;
 using Traversal.CQRS.Queries.GuideQueries;
@@ -7,6 +8,7 @@ namespace Traversal.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("Admin/[controller]/[action]")]
+    [Authorize(Roles = "Admin")]
     public class GuideMediatRController : Controller
     {
         private readonly IMediator _mediator;

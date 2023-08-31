@@ -6,6 +6,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.Extensions.Options;
 using Traversal.CQRS.Handlers.DestinationHandlers;
 using Traversal.Models;
 
@@ -35,7 +36,8 @@ builder.Services.AddHttpClient();
 builder.Services.ConfigureApplicationCookie(_ =>
 {
     _.LoginPath = new PathString("/Login/SignIn");
-    _.LogoutPath = new PathString("/Login/Logout");
+	_.AccessDeniedPath = new PathString("/ErrorPage/AccessDenied/");
+	_.LogoutPath = new PathString("/Login/Logout");
    
 
 });
