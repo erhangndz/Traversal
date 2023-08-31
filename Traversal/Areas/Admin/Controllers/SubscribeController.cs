@@ -10,47 +10,40 @@ namespace Traversal.Areas.Admin.Controllers
     [Area("Admin")]
     [Route("Admin/[controller]/[action]")]
     [Authorize(Roles = "Admin")]
-    public class ContactUsController : Controller
+    public class SubscribeController : Controller
     {
-        private readonly IContactUsService _contactUsService;
+        private readonly ISubscribeService _subscribeService;
 
-        public ContactUsController(IContactUsService contactUsService)
+        public SubscribeController(ISubscribeService subscribeService)
         {
-            _contactUsService = contactUsService;
+            _subscribeService = subscribeService;
         }
 
         public IActionResult Index()
         {
-            var values = _contactUsService.TGetActives();
+            var values = _subscribeService.TGetList();
             return View(values);
         }
 
-        public IActionResult DeleteContactUs(int id)
+        public IActionResult DeleteSubscribe(int id)
         {
-            var values = _contactUsService.TGetByID(id);
-            values.MessageStatus = false;
-            _contactUsService.TUpdate(values);
+            var values = _subscribeService.TGetByID(id);
+            _subscribeService.TDelete(values);
             return RedirectToAction("Index");
         }
-        [HttpGet]
-        public IActionResult ContactUsDetails(int id)
-        {
-            var values = _contactUsService.TGetByID(id);
-            return View(values);
-        }
 
         [HttpGet]
-        public IActionResult ReplyMessage(int id)
+        public IActionResult SendMailToSubscriber(int id)
         {
-            var values = _contactUsService.TGetList().Where(x => x.ContactUsID == id).FirstOrDefault();
+            var values = _subscribeService.TGetList().Where(x => x.SubscribeID == id).FirstOrDefault();
             ViewBag.mail = values.Mail;
-            ViewBag.name = values.Name;
-            ViewBag.content = values.MessageBody;
-            ViewBag.subject ="Yanıt : " + values.Subject;
+            ViewBag.name = "Sevgili Abonemiz";
+            ViewBag.subject = "Abone Bülteni";
             return View();
         }
+
         [HttpPost]
-        public IActionResult ReplyMessage(MailRequest p)
+        public IActionResult SendMailToSubscriber(MailRequest p)
         {
             MimeMessage mimeMessage = new MimeMessage();
             MailboxAddress mailboxAddressFrom = new MailboxAddress("Traversal Admin", "traversalnoreply@gmail.com");
@@ -72,5 +65,7 @@ namespace Traversal.Areas.Admin.Controllers
             return NoContent();
         }
 
-	}
+
+
+    }
 }

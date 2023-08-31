@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <script src="~/Scripts/jquery-3.4.1.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <br />
 <h3>Unit of Work Personel Prim Transferi</h3>
@@ -21,7 +21,7 @@
     <label>Tutar ₺</label>
     <input type="text" asp-for="Amount" class="form-control" />
     <br />
-    <button class="btn btn-dark" id="btnsend">Hesaba Aktar</button>
+    <button class="btn btn-dark" onclick="showSweetAlertAndRedirect()">Hesaba Aktar</button>
 </form>
 
 <script>
@@ -34,4 +34,19 @@
         });
 
     })
+</script>
+
+<script>
+    function showSweetAlertAndRedirect() {
+        Swal.fire({
+            title: 'Tebrikler para transferi başarılı bir şekilde gerçekleşti ',
+            icon: 'success',
+            showCancelButton: false,
+            confirmButtonText: 'Tamam'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/Admin/Account/Index"; // Yönlendirilecek URL'yi buraya yazın
+            }
+        });
+    }
 </script>

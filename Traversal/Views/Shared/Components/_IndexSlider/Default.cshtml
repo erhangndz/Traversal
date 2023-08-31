@@ -1,4 +1,7 @@
-﻿<section class="w3l-main-slider" id="home">
+﻿@using EntityLayer.Concrete;
+@model List<Destination>
+
+<section class="w3l-main-slider" id="home">
     <div class="banner-content">
         <div id="demo-1"
              data-zs-src='["/Traversal-Starter/assets/images/banner1.jpg" , "/Traversal-Starter/assets/images/banner2.jpg" ,"/Traversal-Starter/assets/images/banner3.jpg", "/Traversal-Starter/assets/images/banner4.jpg"]'
@@ -15,13 +18,13 @@
 
                                         <select name="selectpicker" class="selectpicker">
                                             <option value="">Turlarımız</option>
-                                            <option value="africa">Prag</option>
-                                            <option value="america">Ukrayna</option>
-                                            <option value="asia">Hollanda</option>
-                                            <option value="eastern-europe">Balkan Turu</option>
-                                            <option value="europe">Orta Avrupa Turu</option>
-                                            <option value="south-america">Kuzey Avrupa Turu</option>
-                                            <option value="south-america">Doğu Anadolu Turu</option>
+                                            @foreach (var item in Model)
+                                            {
+                                                
+                                            
+                                            <option value="@item.City">@item.City</option>
+                                            }
+                                            
                                         </select>
 
                                     </div>

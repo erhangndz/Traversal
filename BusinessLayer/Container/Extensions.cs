@@ -63,6 +63,9 @@ namespace BusinessLayer.Container
             Services.AddScoped<IAccountDal, EfAccountDal>();
             Services.AddScoped<IAccountService, AccountManager>();
 
+            Services.AddScoped<ISubscribeDal, EfSubscribeDal>();
+            Services.AddScoped<ISubscribeService, SubscribeManager>();
+
             Services.AddScoped<IUnitOfWorkDal,UnitOfWorkDal>();
 
 

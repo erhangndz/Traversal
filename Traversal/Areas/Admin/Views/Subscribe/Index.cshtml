@@ -1,0 +1,51 @@
+﻿@using EntityLayer.Concrete;
+@model List<Subscribe>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h3>Aboneler</h3>
+<br />
+@{
+    int count = 0;
+}
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Mail Adresi</th>
+       
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+
+        <tr>
+            <th>@count</th>
+            <td>@item.Mail</td>
+            
+            <td>
+
+                <i type="button"
+                   id="btnactions"
+                   data-bs-toggle="dropdown"
+                   aria-haspopup="true"
+                   aria-expanded="false"> <i class="bx bx-dots-vertical-rounded"></i> </i>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="btnactions">
+
+                    <a asp-action="DeleteSubscribe" asp-route-id="@item.SubscribeID" class="dropdown-item btn btn-outline-danger"><i class='bx bxs-trash-alt'></i>Sil</a>
+
+                    <a asp-action="SendMailToSubscriber" asp-route-id="@item.SubscribeID" class="dropdown-item btn btn-outline-primary"><i class='bx bx-mail-send'></i>Mail Gönder</a>
+
+                    
+
+
+                </div>
+
+            </td>
+        </tr>
+    }
+</table>
+<br />
+

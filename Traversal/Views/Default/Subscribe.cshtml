@@ -1,0 +1,67 @@
+﻿@using EntityLayer.Concrete;
+@model Subscribe
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<div class="col-lg-6 col-md-12 column pl-lg-5 column4 mt-lg-0 mt-5">
+    <h3>Haber Bülteni </h3>
+    <div class="end-column">
+        <h4>Son gelişmelerden ilk sizin haberiniz olsun.</h4>
+        <form asp-action="Subscribe" asp-controller="Default" class="subscribe" method="post">
+            <input type="email" asp-for="Mail" placeholder="Email Adresiniz" required="">
+            <button type="submit" onclick="showSweetAlert()">Abone Ol</button>
+        </form>
+        <p>Son gelişmelerden ve kampanyalardan ilk sizin haberiniz olsun isterseniz abone olun.</p>
+    </div>
+</div>
+
+<script>
+    function showSweetAlert() {
+        Swal.fire({
+            title: 'Abonelik için mail adresiniz sisteme kaydedildi.',
+            icon: 'info',
+            showCancelButton: false,
+            confirmButtonText: 'Tamam'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/Default/Index"; // Yönlendirilecek URL'yi buraya yazın
+            }
+        });
+    }
+</script>
+ </div>
+<div class="d-flex below-section justify-content-between align-items-center pt-4 mt-5">
+    <div class="columns text-lg-left text-center">
+        <p>
+            &copy; @DateTime.Now.Year Traversal. Tüm Hakları Saklıdır .Design by <a href="https://w3layouts.com/" target="_blank">
+                W3Layouts
+            </a>
+        </p>
+    </div>
+    <div class="columns-2 mt-lg-0 mt-3">
+        <ul class="social">
+            <li>
+                <a href="#facebook"><span class="fa fa-facebook" aria-hidden="true"></span></a>
+            </li>
+            <li>
+                <a href="#linkedin"><span class="fa fa-linkedin" aria-hidden="true"></span></a>
+            </li>
+            <li>
+                <a href="#twitter"><span class="fa fa-twitter" aria-hidden="true"></span></a>
+            </li>
+            <li>
+                <a href="#google"><span class="fa fa-google-plus" aria-hidden="true"></span></a>
+            </li>
+            <li>
+                <a href="#github"><span class="fa fa-github" aria-hidden="true"></span></a>
+            </li>
+        </ul>
+    </div>
+</div>
+            </div>
+        </div>
+
+
+    </section>
+</footer>

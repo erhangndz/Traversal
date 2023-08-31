@@ -36,17 +36,18 @@ namespace Traversal.Controllers
                 ViewBag.image = user.Image;
                 ViewBag.name = user.NameSurname;
                 ViewBag.Id = id;
-                var values = _destinationService.TGetAll().Where(x=>x.DestinationID==id).FirstOrDefault();
+                
 
-                return View(values);
+                return View();
             }
             else
             {
                 ViewBag.Id = id;
-                var values = _destinationService.TGetAll().Where(x => x.DestinationID == id).FirstOrDefault();
+                
 
-                return View(values);
+                return View();
             }
+            
             
             
         }

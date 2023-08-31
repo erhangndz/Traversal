@@ -1,6 +1,6 @@
 ﻿@model MailRequest
 @{
-    ViewData["Title"] = "ReplyMessage";
+    ViewData["Title"] = "SendMailToSubscriber";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -10,7 +10,7 @@
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <br />
-<h3>Mesajı Mail ile Cevapla</h3>
+<h3>Abone Bülteni Gönder</h3>
 <br />
 <form method="post">
 
@@ -23,9 +23,8 @@
     <label>Konu </label>
     <input type="text" class="form-control" asp-for="Subject" value="@ViewBag.subject" />
     <br />
-   
-    <alert class="alert-dark"> <b>Gelen Mesaj İçeriği : </b> @ViewBag.content</alert>
-    <br />
+
+    
     <textarea class="form-control" asp-for="Body" rows="10" placeholder="Mailinizi Bu Alana Yazın..."></textarea>
     <br />
     <button class="btn btn-outline-dark" onclick="showSweetAlertAndRedirect()"> <i class='bx bx-mail-send'></i> Gönder</button>
@@ -40,17 +39,19 @@
 <script>
     function showSweetAlertAndRedirect() {
         Swal.fire({
-            title: 'Mail başarılı bir şekilde gönderildi ',
+            title: 'Abone Bülteni Maili başarılı bir şekilde gönderildi ',
             icon: 'success',
             showCancelButton: false,
             confirmButtonText: 'Tamam'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "/Admin/ContactUs/Index"; // Yönlendirilecek URL'yi buraya yazın
+                window.location.href = "/Admin/Subscribe/Index"; // Yönlendirilecek URL'yi buraya yazın
             }
         });
     }
 </script>
+
+
 
 
 
